@@ -1,12 +1,19 @@
-import React from 'react';
-import "./App.css";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import Footer from "./Pages/Shared/Footer/Footer";
+import Navbar from "./Pages/Shared/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline text-red-400">
-        Hello world!
-      </h1>
+    <div>
+      <Navbar />
+      <h1>Lorem ipsum</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
