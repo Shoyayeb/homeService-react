@@ -2,11 +2,18 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import useAuth from "./../../../Hooks/useAuth";
 
 const LoginRegister = () => {
   const [open, setOpen] = useState(true);
-  const [isLogin, setIsLogin] = useState(true);
+  // const [isLogin, setIsLogin] = useState(true);
   const cancelButtonRef = useRef(null);
+  const { isLogin, setIsLogin, socialSignIn, error } = useAuth();
+  if (error) {
+    console.log("====================================");
+    console.log(error);
+    console.log("====================================");
+  }
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -51,6 +58,7 @@ const LoginRegister = () => {
                 <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
                   Login To Your Account
                 </div>
+
                 <div className="flex gap-4 item-center">
                   <button
                     type="button"
@@ -71,6 +79,7 @@ const LoginRegister = () => {
                   <button
                     type="button"
                     className="py-2 px-4 flex justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                    onClick={() => socialSignIn("google")}
                   >
                     <svg
                       width="20"

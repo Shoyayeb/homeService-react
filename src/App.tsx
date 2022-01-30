@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AuthProvider from "./Context/AuthProvider/AuthProvider";
 import Home from "./Pages/Home/Home/Home";
 import LoginRegister from "./Pages/LoginRegister/LoginRegister/LoginRegister";
 import NotFound from "./Pages/NotFound/NotFound";
@@ -8,7 +9,7 @@ import Navbar from "./Pages/Shared/Navbar/Navbar";
 
 function App() {
   return (
-    <div>
+    <AuthProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -17,7 +18,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-    </div>
+    </AuthProvider>
   );
 }
 

@@ -1,9 +1,30 @@
 import { KeyIcon, MailIcon } from "@heroicons/react/outline";
-import React from "react";
+import React, { useState } from "react";
+import useAuth from "./../../../Hooks/useAuth";
 
 const Login = () => {
+  const [loginData, setLoginData] = useState<any>({});
+  const { setError, loginUserByEmail, setIsLogin } = useAuth();
+  const handleOnChange = (e: any) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const data = { ...loginData };
+    data[field] = value;
+    setLoginData(data);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(loginData);
+    if (loginData === {} || !loginData.email || !loginData.password) {
+      setError("Please Enter Your Email And Password");
+    } else {
+      console.log("creating");
+      loginUserByEmail(loginData.email, loginData.password);
+    }
+  };
   return (
-    <form action="#">
+    <form onSubmit={handleSubmit}>
       <div className="flex flex-col mb-2">
         <div className="flex relative ">
           <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -12,6 +33,8 @@ const Login = () => {
           <input
             type="text"
             id="sign-in-email"
+            name="email"
+            onChange={handleOnChange}
             aria-required={true}
             required={true}
             className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -27,6 +50,8 @@ const Login = () => {
           <input
             type="password"
             id="sign-in-password"
+            name="password"
+            onChange={handleOnChange}
             aria-required={true}
             required={true}
             className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
