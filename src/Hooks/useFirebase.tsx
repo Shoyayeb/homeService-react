@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -48,16 +47,8 @@ const useFirebase = () => {
   };
 
   //   create user with email and password
-  const createUserByEmail = (
-    email: string,
-    password: string,
-    firstName: string,
-    lastName: string,
-    phone: any
-  ) => {
+  const createUserByEmail = (email: string, password: string, name: string) => {
     setIsLoading(true);
-    const name = firstName + " " + lastName;
-
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("user created", auth.currentUser);
@@ -66,19 +57,6 @@ const useFirebase = () => {
           displayName: name,
           photoURL: null,
         });
-        axios
-          .get("http://localhost:5500/userupdate", {
-            headers: {
-              email: `${auth.currentUser.uid}`,
-            },
-          })
-          .then((res) => {
-            setError(res.data);
-            console.log(res.data);
-          })
-          .catch((error) => {
-            setError(error.message);
-          });
       })
       .catch((error) => {
         setError(error.message);

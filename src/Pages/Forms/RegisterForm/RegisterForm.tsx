@@ -3,11 +3,44 @@ import {
   KeyIcon,
   MailIcon,
 } from "@heroicons/react/outline";
-import React from "react";
+import React, { useState } from "react";
+import useAuth from "../../../Hooks/useAuth";
 
-const Register = () => {
+const RegisterForm = () => {
+  const [registerData, setRegisterData] = useState<any>({});
+  const { setError, setIsLogin, createUserByEmail } = useAuth();
+
+  // console.log(user);
+  const handleOnChange = (e: any) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const data = { ...registerData };
+    data[field] = value;
+    setRegisterData(data);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(registerData);
+    if (
+      registerData === {} ||
+      !registerData.email ||
+      !registerData.password ||
+      !registerData.name
+    ) {
+      console.log("notEntered", registerData);
+      setError("Please enter your information correctly");
+    } else {
+      console.log("creating");
+      createUserByEmail(
+        registerData.email,
+        registerData.password,
+        registerData.name
+      );
+    }
+  };
   return (
-    <form action="#">
+    <form onSubmit={handleSubmit}>
       <div className="flex flex-col mb-2">
         <div className="flex relative ">
           <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -15,7 +48,9 @@ const Register = () => {
           </span>
           <input
             type="text"
+            onChange={handleOnChange}
             id="sign-up-name"
+            name="name"
             aria-required={true}
             required={true}
             className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -30,7 +65,9 @@ const Register = () => {
           </span>
           <input
             type="text"
+            onChange={handleOnChange}
             id="sign-up-email"
+            name="email"
             aria-required={true}
             required={true}
             className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -45,7 +82,9 @@ const Register = () => {
           </span>
           <input
             type="password"
+            onChange={handleOnChange}
             id="sign-up-password"
+            name="password"
             aria-required={true}
             required={true}
             className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -66,4 +105,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterForm;

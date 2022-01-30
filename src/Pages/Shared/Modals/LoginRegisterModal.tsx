@@ -1,10 +1,10 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
-import Login from "../Login/Login";
-import Register from "../Register/Register";
 import useAuth from "./../../../Hooks/useAuth";
+import LoginForm from "./../../Forms/LoginForm/LoginForm";
+import RegisterForm from "./../../Forms/RegisterForm/RegisterForm";
 
-const LoginRegister = () => {
+const LoginRegisterModal = () => {
   const [open, setOpen] = useState(true);
   // const [isLogin, setIsLogin] = useState(true);
   const cancelButtonRef = useRef(null);
@@ -94,7 +94,9 @@ const LoginRegister = () => {
                     Google
                   </button>
                 </div>
-                <div className="mt-8">{isLogin ? <Login /> : <Register />}</div>
+                <div className="mt-8">
+                  {isLogin ? <LoginForm /> : <RegisterForm />}
+                </div>
                 <div className="flex items-center justify-center mt-6">
                   <button
                     className="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white"
@@ -132,4 +134,4 @@ const LoginRegister = () => {
   );
 };
 
-export default LoginRegister;
+export default LoginRegisterModal;

@@ -1,8 +1,8 @@
 import { KeyIcon, MailIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
-import useAuth from "./../../../Hooks/useAuth";
+import useAuth from "../../../Hooks/useAuth";
 
-const Login = () => {
+const LoginForm = () => {
   const [loginData, setLoginData] = useState<any>({});
   const { setError, loginUserByEmail, setIsLogin } = useAuth();
   const handleOnChange = (e: any) => {
@@ -81,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;
