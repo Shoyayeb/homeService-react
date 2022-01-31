@@ -1,26 +1,33 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef } from "react";
 import useAuth from "./../../../Hooks/useAuth";
 import LoginForm from "./../../Forms/LoginForm/LoginForm";
 import RegisterForm from "./../../Forms/RegisterForm/RegisterForm";
 
 const LoginRegisterModal = () => {
-  const [open, setOpen] = useState(true);
+  // const [open, setOpen] = useState(false);
   // const [isLogin, setIsLogin] = useState(true);
   const cancelButtonRef = useRef(null);
-  const { isLogin, setIsLogin, socialSignIn, error } = useAuth();
+  const {
+    isLogin,
+    setIsLogin,
+    socialSignIn,
+    error,
+    showLoginModal,
+    setShowLoginModal,
+  } = useAuth();
   if (error) {
     console.log("====================================");
     console.log(error);
     console.log("====================================");
   }
   return (
-    <Transition.Root show={open} as={Fragment}>
+    <Transition.Root show={showLoginModal} as={Fragment}>
       <Dialog
         as="div"
         className="fixed z-10 inset-0 overflow-y-auto"
         initialFocus={cancelButtonRef}
-        onClose={setOpen}
+        onClose={setShowLoginModal}
       >
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <Transition.Child
@@ -112,15 +119,8 @@ const LoginRegisterModal = () => {
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={() => setOpen(false)}
-                >
-                  Deactivate
-                </button>
-                <button
-                  type="button"
                   className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={() => setOpen(false)}
+                  onClick={() => setShowLoginModal(false)}
                   ref={cancelButtonRef}
                 >
                   Cancel

@@ -16,6 +16,8 @@ initializeFirebase();
 const useFirebase = () => {
   const [user, setUser] = useState<[] | {} | null>([]);
   const [error, setError] = useState<string>("");
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLogin, setIsLogin] = useState<boolean>(true);
 
@@ -34,6 +36,7 @@ const useFirebase = () => {
         })
         .catch((error) => {
           setError(error.message);
+          setShowErrorModal(true);
         });
     } else if (socialProvider === "twitter") {
       signInWithPopup(auth, twitterProvider)
@@ -42,6 +45,7 @@ const useFirebase = () => {
         })
         .catch((error) => {
           setError(error.message);
+          setShowErrorModal(true);
         });
     }
   };
@@ -60,6 +64,7 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
+        setShowErrorModal(true);
       })
       .finally(() => setIsLoading(false));
   };
@@ -72,6 +77,7 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
+        setShowErrorModal(true);
       });
   };
 
@@ -101,6 +107,7 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
+        setShowErrorModal(true);
       })
       .finally(() => setIsLoading(false));
   };
@@ -112,6 +119,10 @@ const useFirebase = () => {
     isLoading,
     isLogin,
     setIsLogin,
+    showLoginModal,
+    setShowLoginModal,
+    showErrorModal,
+    setShowErrorModal,
     socialSignIn,
     createUserByEmail,
     signOutUser,

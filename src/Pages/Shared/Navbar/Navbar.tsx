@@ -2,7 +2,22 @@ import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "./../../../Hooks/useAuth";
 const Navbar = () => {
+  const {
+    user,
+    error,
+    setError,
+    isLoading,
+    isLogin,
+    setIsLogin,
+    showLoginModal,
+    setShowLoginModal,
+    socialSignIn,
+    createUserByEmail,
+    signOutUser,
+    loginUserByEmail,
+  } = useAuth();
   const navigation = [
     { name: "Dashboard", to: "/home", current: true },
     { name: "Team", to: "/login", current: false },
@@ -63,15 +78,15 @@ const Navbar = () => {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <Link
-                  to="/login"
+                <button
+                  onClick={() => setShowLoginModal(true)}
                   type="button"
                   className="bg-red-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
                   <span className="sr-only">View notifications</span>
-                  Login
+                  Sign In
                   {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
-                </Link>
+                </button>
               </div>
               {/* <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
