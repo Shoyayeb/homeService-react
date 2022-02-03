@@ -1,3 +1,4 @@
+import { LocationMarkerIcon, PlusCircleIcon } from "@heroicons/react/outline";
 import React from "react";
 import { Link } from "react-router-dom";
 import HeroImage from "../../../Assets/homepage.jpg";
@@ -27,14 +28,20 @@ const Hero = () => {
                 <span className="block xl:inline">in your area.</span>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Always providing the best patient treatment with specialized{" "}
-                <span className="text-indigo-600">doctor</span> ,{" "}
-                <span className="text-indigo-600">nursing staff</span> and{" "}
-                <span className="text-indigo-600">medical equipment</span>.
+                Always providing the best home service with specialized{" "}
+                <span className="text-indigo-600">
+                  designer, cleaner, plumber and so on.
+                </span>{" "}
+                ,{" "}
+                {/* <span className="text-indigo-600">nursing staff</span> and{" "}
+                <span className="text-indigo-600">medical equipment</span>. */}
               </p>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                <span className="text-red-600">For Emergency: </span>{" "}
-                <a href="tel:+8801212345678" className="text-red-600 font-bold">
+                <span className="text-gray-800">Know more: </span>{" "}
+                <a
+                  href="tel:+8801212345678"
+                  className="text-indigo-600 font-bold"
+                >
                   +8801212345678
                 </a>
               </p>
@@ -42,18 +49,24 @@ const Hero = () => {
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
                   <Link
-                    to="/ambulance"
+                    to="/hire"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                   >
-                    Get Ambulance
+                    <span>
+                      <PlusCircleIcon className="w-5 h-5" />
+                    </span>
+                    <span>Hire Someone</span>
                   </Link>
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
                   <Link
-                    to="/onlinedoctor"
+                    to="/services"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
                   >
-                    Find a Doctor
+                    <span>
+                      <LocationMarkerIcon className="w-5 h-5" />
+                    </span>
+                    <span>Explore Services</span>
                   </Link>
                 </div>
               </div>
