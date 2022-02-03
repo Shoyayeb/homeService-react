@@ -3,6 +3,7 @@ import { Fragment, useRef } from "react";
 import useAuth from "./../../../Hooks/useAuth";
 import LoginForm from "./../../Forms/LoginForm/LoginForm";
 import RegisterForm from "./../../Forms/RegisterForm/RegisterForm";
+import ErrorModal from "./../Banner/ErrorBanner/ErrorBanner";
 
 const LoginRegisterModal = () => {
   // const [open, setOpen] = useState(false);
@@ -59,13 +60,11 @@ const LoginRegisterModal = () => {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-              {/* <Login /> */}
-
+              {error ? <ErrorModal /> : ""}
               <div className="flex flex-col w-full  px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
                 <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
                   Login To Your Account
                 </div>
-
                 <div className="flex gap-4 item-center">
                   <button
                     type="button"

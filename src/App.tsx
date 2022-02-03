@@ -4,14 +4,14 @@ import AuthProvider from "./Context/AuthProvider/AuthProvider";
 import Home from "./Pages/Home/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
 import Footer from "./Pages/Shared/Footer/Footer";
-import ModalsRoot from "./Pages/Shared/Modals/ModalsRoot";
+import LoginRegisterModal from "./Pages/Shared/Modals/LoginRegisterModal";
 import Navbar from "./Pages/Shared/Navbar/Navbar";
 
 function App() {
   return (
     <AuthProvider>
       <Navbar />
-      <ModalsRoot />
+      <LoginRegisterModal />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
