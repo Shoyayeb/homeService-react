@@ -2,22 +2,10 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../Assets/logo.png";
 import useAuth from "./../../../Hooks/useAuth";
 const Navbar = () => {
-  const {
-    user,
-    error,
-    setError,
-    isLoading,
-    isLogin,
-    setIsLogin,
-    showLoginModal,
-    setShowLoginModal,
-    socialSignIn,
-    createUserByEmail,
-    signOutUser,
-    loginUserByEmail,
-  } = useAuth();
+  const { user, setShowLoginModal, signOutUser } = useAuth();
   const navigation = [
     { name: "Dashboard", to: "/home", current: true },
     { name: "Team", to: "/login", current: false },
@@ -28,7 +16,7 @@ const Navbar = () => {
     return classes.filter(Boolean).join(" ");
   }
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="dark:bg-gray-800 bg-gray-200">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -48,12 +36,12 @@ const Navbar = () => {
                 <div className="flex-shrink-0 flex items-center">
                   <img
                     className="block lg:hidden h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                    src={logo}
                     alt="Workflow"
                   />
                   <img
                     className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                    src={logo}
                     alt="Workflow"
                   />
                 </div>
@@ -65,8 +53,8 @@ const Navbar = () => {
                         to={item.to}
                         className={classNames(
                           item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                            ? "dark:bg-gray-900 dark:text-white hover:bg-gray-300"
+                            : "dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white hover:bg-gray-300",
                           "px-3 py-2 rounded-md text-sm font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
@@ -82,7 +70,7 @@ const Navbar = () => {
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <button
                     type="button"
-                    className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                    className="dark:bg-gray-800 p-1 rounded-full dark:text-gray-400 dark:hover:text-white hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800 dark:focus:ring-white"
                   >
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -110,7 +98,7 @@ const Navbar = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="origin-top-right absolute right-0 mt-2 w-max rounded-md shadow-lg py-1 bg-white dark:bg-gray-700  ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                      <Menu.Items className="origin-top-right absolute right-0 mt-2 w-max rounded-md shadow-lg py-1 dark:bg-gray-700 bg-gray-100 ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
                         <Menu.Item>
                           <div className="flex flex-col justify-center align-middle items-center px-2 py-4">
                             <img
@@ -137,7 +125,7 @@ const Navbar = () => {
                                 active
                                   ? "bg-gray-100 dark:hover:bg-gray-600"
                                   : "",
-                                "block px-4 py-2 text-sm text-gray-600 dark:text-white "
+                                "block px-4 py-2 text-sm text-gray-600 dark:text-white hover:bg-white"
                               )}
                             >
                               Manage Your Profile
@@ -152,7 +140,7 @@ const Navbar = () => {
                                 active
                                   ? "bg-gray-100 dark:hover:bg-gray-600"
                                   : "",
-                                "block px-4 py-2 text-sm text-gray-700 dark:text-white "
+                                "block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-white"
                               )}
                             >
                               Your Bookings
@@ -163,8 +151,8 @@ const Navbar = () => {
                           <div>
                             <button
                               onClick={signOutUser}
-                              className="
-                                inline py-4 px-4 text-sm text-gray-700 w-full dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 text-left"
+                              className="hover:bg-white
+                                inline py-4 px-4 text-sm text-gray-700 w-full dark:text-white dark:hover:bg-gray-600 text-left"
                             >
                               Sign out
                             </button>
@@ -179,7 +167,7 @@ const Navbar = () => {
                   <button
                     onClick={() => setShowLoginModal(true)}
                     type="button"
-                    className="bg-red-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     <span className="sr-only">View notifications</span>
                     Sign In

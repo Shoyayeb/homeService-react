@@ -71,19 +71,22 @@ const LoginRegisterModal = () => {
               {error ? (
                 <ErrorBanner />
               ) : (
-                <div className="bg-blue-3040 flex justify-end ">
+                <div className="dark:bg-gray-800 flex justify-end ">
                   <button
                     type="button"
                     className=" flex p-2 rounded-md "
                     onClick={() => setShowLoginModal(false)}
                   >
                     <span className="sr-only">Dismiss</span>
-                    <XIcon className="h-6 w-6 text-black" aria-hidden="true" />
+                    <XIcon
+                      className="h-6 w-6 text-black dark:text-white"
+                      aria-hidden="true"
+                    />
                   </button>
                 </div>
               )}
 
-              <div className="flex flex-col w-full  px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+              <div className="flex flex-col w-full  px-4 py-8 bg-white rounded-b-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
                 <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
                   {isLogin ? "Login To" : "Create"} Your Account
                 </div>
