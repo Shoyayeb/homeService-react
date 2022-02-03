@@ -1,9 +1,10 @@
 import { Dialog, Transition } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
 import { Fragment, useRef } from "react";
 import useAuth from "./../../../Hooks/useAuth";
 import LoginForm from "./../../Forms/LoginForm/LoginForm";
 import RegisterForm from "./../../Forms/RegisterForm/RegisterForm";
-import ErrorModal from "./../Banner/ErrorBanner/ErrorBanner";
+import ErrorBanner from "./../Banner/ErrorBanner/ErrorBanner";
 
 const LoginRegisterModal = () => {
   // const [open, setOpen] = useState(false);
@@ -22,6 +23,13 @@ const LoginRegisterModal = () => {
     console.log(error);
     console.log("====================================");
   }
+  const changeForm = () => {
+    if (isLogin) {
+      setIsLogin(false);
+    } else if (!isLogin) {
+      setIsLogin(true);
+    }
+  };
   return (
     <Transition.Root show={showLoginModal} as={Fragment}>
       <Dialog
@@ -60,10 +68,24 @@ const LoginRegisterModal = () => {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-              {error ? <ErrorModal /> : ""}
+              {error ? (
+                <ErrorBanner />
+              ) : (
+                <div className="bg-blue-3040 flex justify-end ">
+                  <button
+                    type="button"
+                    className=" flex p-2 rounded-md "
+                    onClick={() => setShowLoginModal(false)}
+                  >
+                    <span className="sr-only">Dismiss</span>
+                    <XIcon className="h-6 w-6 text-black" aria-hidden="true" />
+                  </button>
+                </div>
+              )}
+
               <div className="flex flex-col w-full  px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
                 <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
-                  Login To Your Account
+                  {isLogin ? "Login To" : "Create"} Your Account
                 </div>
                 <div className="flex gap-4 item-center">
                   <button
@@ -106,16 +128,18 @@ const LoginRegisterModal = () => {
                 <div className="flex items-center justify-center mt-6">
                   <button
                     className="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white"
-                    onClick={() => setIsLogin(false)}
+                    onClick={changeForm}
                   >
                     <span className="ml-2">
-                      You don&#x27;t have an account?
+                      {isLogin
+                        ? `You Don't Have An Account?`
+                        : "Have an Account Already?"}
                     </span>
                   </button>
                 </div>
               </div>
 
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              {/* <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
                   className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
@@ -124,7 +148,7 @@ const LoginRegisterModal = () => {
                 >
                   Cancel
                 </button>
-              </div>
+              </div> */}
             </div>
           </Transition.Child>
         </div>

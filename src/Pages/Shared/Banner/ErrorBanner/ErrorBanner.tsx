@@ -2,7 +2,7 @@
 import { ExclamationIcon, XIcon } from "@heroicons/react/outline";
 import useAuth from "./../../../../Hooks/useAuth";
 
-export default function ErrorModal() {
+export default function ErrorBanner() {
   const { error, setError } = useAuth();
   const hideError = () => {
     setError("");

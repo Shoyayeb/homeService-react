@@ -90,6 +90,7 @@ const useFirebase = () => {
         console.log("====================================");
       } else {
         setUser({});
+        console.log(user);
       }
       setIsLoading(false);
     });
@@ -102,6 +103,9 @@ const useFirebase = () => {
     signOut(auth)
       .then(() => {
         setError("");
+        console.log("====================================");
+        console.log("Sign out success");
+        console.log("====================================");
         //   sign out successfully
       })
       .catch((error) => {
