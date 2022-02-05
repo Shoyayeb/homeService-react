@@ -3,14 +3,16 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo.png";
+import userDefault from "../../../Assets/user-default.png";
 import useAuth from "./../../../Hooks/useAuth";
 const Navbar = () => {
   const { user, setShowLoginModal, signOutUser } = useAuth();
   const navigation = [
-    { name: "Dashboard", to: "/home", current: true },
-    { name: "Team", to: "/login", current: false },
-    { name: "Projects", to: "/project", current: false },
-    { name: "Calendar", to: "/errrr", current: false },
+    { name: "Home", to: "/home", current: true },
+    { name: "Services", to: "/services", current: false },
+    { name: "Hire Someone", to: "/hire_single", current: false },
+    { name: "About Us", to: "/about", current: false },
+    { name: "Contact Us", to: "/login", current: false },
   ];
   function classNames(...classes: any) {
     return classes.filter(Boolean).join(" ");
@@ -81,10 +83,7 @@ const Navbar = () => {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src={
-                            user.photoURL ||
-                            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          }
+                          src={user.photoURL || userDefault}
                           alt=""
                         />
                       </Menu.Button>
@@ -103,10 +102,7 @@ const Navbar = () => {
                           <div className="flex flex-col justify-center align-middle items-center px-2 py-4">
                             <img
                               className=" h-16 w-1h-16 rounded-full ring-2 ring-white bg-orange-500"
-                              src={
-                                user.photoURL ||
-                                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                              }
+                              src={user.photoURL || userDefault}
                               alt=""
                             />
                             <p className="text-2xl font-semibold text-gray-700 dark:text-white">
