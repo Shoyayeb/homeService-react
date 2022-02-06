@@ -57,10 +57,7 @@ const DashBoardNav = () => {
                 </span>
               </span>
             </CustomLink>
-            <Link
-              className="w-full text-gray-400 flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start hover:text-gray-800 border-l-4 border-transparent"
-              to="/"
-            >
+            <CustomLink to="/dashboard/addservice">
               <span className="text-left">
                 <svg
                   width="20"
@@ -73,7 +70,7 @@ const DashBoardNav = () => {
                 </svg>
               </span>
               <span className="mx-4 text-sm font-normal">Resources</span>
-            </Link>
+            </CustomLink>
             <Link
               className="w-full text-gray-400 flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start hover:text-gray-800 border-l-4 border-transparent"
               to="/dashboard/users"

@@ -126,15 +126,6 @@ const useFirebase = () => {
   const saveUser = (email: any, displayName: any, method: any) => {
     const url = "http://localhost:4000/adduser";
     const data = { email, displayName };
-
-    // axios
-    //   .post("http://localhost:4000/adduser", user)
-    //   .then(function (res: any) {
-    //     console.log(res);
-    //   })
-    //   .catch(function (error: any) {
-    //     console.log(error);
-    //   });
     axios({ method, url, data });
   };
 
