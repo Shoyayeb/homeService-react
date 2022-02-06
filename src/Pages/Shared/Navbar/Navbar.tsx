@@ -37,12 +37,12 @@ const Navbar = () => {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <img
-                    className="block lg:hidden h-8 w-auto"
+                    className="block lg:hidden h-8 w-auto dark:backdrop-invert"
                     src={logo}
                     alt="Workflow"
                   />
                   <img
-                    className="hidden lg:block h-8 w-auto"
+                    className="hidden lg:block h-8 w-auto dark:backdrop-invert"
                     src={logo}
                     alt="Workflow"
                   />
@@ -125,6 +125,21 @@ const Navbar = () => {
                               )}
                             >
                               Manage Your Profile
+                            </a>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <a
+                              href="/dashboard"
+                              className={classNames(
+                                active
+                                  ? "bg-gray-100 dark:hover:bg-gray-600"
+                                  : "",
+                                "block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-white"
+                              )}
+                            >
+                              DashBoard
                             </a>
                           )}
                         </Menu.Item>

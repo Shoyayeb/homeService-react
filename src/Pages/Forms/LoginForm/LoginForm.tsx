@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 
 const LoginForm = () => {
+  const { setError, loginUserByEmail } = useAuth();
   const [loginData, setLoginData] = useState<any>({});
-  const { setError, loginUserByEmail, setIsLogin } = useAuth();
   const handleOnChange = (e: any) => {
     const field = e.target.name;
     const value = e.target.value;

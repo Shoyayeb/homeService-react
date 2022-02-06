@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -31,8 +32,13 @@ const useFirebase = () => {
     if (socialProvider === "google") {
       signInWithPopup(auth, googleProvider)
         .then((result: any) => {
+          const user = result.user;
           setError("");
           setShowLoginModal(false);
+          console.log("=========");
+          console.log(user);
+          console.log("=========");
+          saveUser(user.email, user.displayName, "put");
         })
         .catch((error) => {
           setError(error.message);
@@ -42,6 +48,7 @@ const useFirebase = () => {
         .then((result: any) => {
           setError("");
           setShowLoginModal(false);
+          // saveUser(result.email, result.displayName, "put");
         })
         .catch((error) => {
           setError(error.message);
@@ -53,13 +60,15 @@ const useFirebase = () => {
   const createUserByEmail = (email: string, password: string, name: string) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then((userCredential: any) => {
         console.log("user created", auth.currentUser);
         setError("");
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: null,
         });
+        saveUser(email, name, "post");
+
         setShowLoginModal(false);
       })
       .catch((error) => {
@@ -112,6 +121,21 @@ const useFirebase = () => {
         setError(error.message);
       })
       .finally(() => setIsLoading(false));
+  };
+
+  const saveUser = (email: any, displayName: any, method: any) => {
+    const url = "http://localhost:4000/adduser";
+    const data = { email, displayName };
+
+    // axios
+    //   .post("http://localhost:4000/adduser", user)
+    //   .then(function (res: any) {
+    //     console.log(res);
+    //   })
+    //   .catch(function (error: any) {
+    //     console.log(error);
+    //   });
+    axios({ method, url, data });
   };
 
   return {

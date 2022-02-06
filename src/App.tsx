@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AuthProvider from "./Context/AuthProvider/AuthProvider";
+import AddAdminForm from "./Pages/Forms/AddAdminForm/AddAdminForm";
 import Home from "./Pages/Home/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
 import Footer from "./Pages/Shared/Footer/Footer";
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/dashboard" element={<AddAdminForm />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
