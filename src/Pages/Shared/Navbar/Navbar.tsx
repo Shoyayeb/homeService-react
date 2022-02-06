@@ -115,8 +115,8 @@ const Navbar = () => {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="/"
+                            <Link
+                              to="/"
                               className={classNames(
                                 active
                                   ? "bg-gray-100 dark:hover:bg-gray-600"
@@ -125,13 +125,13 @@ const Navbar = () => {
                               )}
                             >
                               Manage Your Profile
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="/dashboard"
+                            <Link
+                              to="/dashboard"
                               className={classNames(
                                 active
                                   ? "bg-gray-100 dark:hover:bg-gray-600"
@@ -140,13 +140,13 @@ const Navbar = () => {
                               )}
                             >
                               DashBoard
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="/"
+                            <Link
+                              to="/"
                               className={classNames(
                                 active
                                   ? "bg-gray-100 dark:hover:bg-gray-600"
@@ -155,7 +155,7 @@ const Navbar = () => {
                               )}
                             >
                               Your Bookings
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
