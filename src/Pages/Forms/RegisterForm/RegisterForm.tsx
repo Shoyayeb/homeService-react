@@ -53,6 +53,7 @@ const RegisterForm = () => {
             name="name"
             aria-required={true}
             required={true}
+            autoComplete="name"
             className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             placeholder="Your Name"
           />
@@ -70,6 +71,7 @@ const RegisterForm = () => {
             name="email"
             aria-required={true}
             required={true}
+            autoComplete="email"
             className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             placeholder="Your email"
           />
@@ -87,6 +89,7 @@ const RegisterForm = () => {
             name="password"
             aria-required={true}
             required={true}
+            autoComplete="new-password"
             className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             placeholder="Your password"
           />

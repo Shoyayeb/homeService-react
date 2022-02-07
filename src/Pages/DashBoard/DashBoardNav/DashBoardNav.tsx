@@ -1,9 +1,12 @@
-import { PresentationChartLineIcon } from "@heroicons/react/outline";
+import {
+  IdentificationIcon,
+  PlusCircleIcon,
+  UserGroupIcon,
+} from "@heroicons/react/outline";
 import React from "react";
 import { Link, LinkProps, useMatch, useResolvedPath } from "react-router-dom";
 
 const DashBoardNav = () => {
-  
   const CustomLink = ({ children, to, ...props }: LinkProps) => {
     let resolved = useResolvedPath(to);
     let match = useMatch({ path: resolved.pathname, end: true });
@@ -11,7 +14,7 @@ const DashBoardNav = () => {
       <Link
         className={
           match
-            ? "w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start border-l-4 border-purple-500"
+            ? "w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start border-indigo-500 bg-gradient-to-l from-white to-indigo-100 border-l-4 "
             : "w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
         }
         to={to}
@@ -22,76 +25,156 @@ const DashBoardNav = () => {
     );
   };
   return (
-    <div className="h-screen hidden lg:block shadow-lg relative w-80">
-      <div className="bg-white h-full dark:bg-gray-700">
-        <div className="flex items-center justify-start pt-6 ml-8">
-          <p className="font-bold dark:text-white text-xl">Home Service</p>
-        </div>
-        <nav className="mt-6">
-          <div>
+    <>
+      <div className="flex flex-col sm:flex-row sm:justify-around bg-white dark:bg-gray-800">
+        <div className="w-72 h-screen">
+          <nav className="mt-10 px-6">
             <CustomLink to="/dashboard">
-              <span className="text-left">
-                <PresentationChartLineIcon width="20" height="20" />
-              </span>
-              <span className="mx-2 text-sm font-normal">Dashboard</span>
+              <IdentificationIcon
+                className="text-indigo-500"
+                width="20"
+                height="20"
+              />
+              <span className="mx-4 text-md font-normal">Dashboard</span>
             </CustomLink>
-            <CustomLink
-              // className="w-full text-gray-400 flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start hover:text-gray-800 border-l-4 border-transparent"
-              to="/dashboard/users"
-            >
-              <span className="text-left">
-                <svg
+            <div>
+              <p className="text-gray-300 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
+                Admin Services
+              </p>
+              <CustomLink to="/dashboard/users">
+                <UserGroupIcon
+                  className="text-indigo-500"
                   width="20"
                   height="20"
-                  fill="currentColor"
-                  viewBox="0 0 2048 1792"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z"></path>
-                </svg>
-              </span>
-              <span className="mx-2 text-sm font-normal">
-                Refered Projects
-                <span className="p-1 ml-4 rounded-lg w-4 h-2 bg-gray-200 text-gray-400 text-xs">
-                  0
+                />
+                <span className="mx-4 text-md font-normal">Users</span>
+              </CustomLink>
+
+              <CustomLink to="/dashboard/addservice">
+                <PlusCircleIcon
+                  className="text-indigo-500"
+                  width="20"
+                  height="20"
+                />
+                <span className="mx-4 text-md font-normal">Add Service</span>
+              </CustomLink>
+            </div>
+            <div>
+              <p className="text-gray-300 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
+                COMMUNICATION
+              </p>
+              <a
+                className="hover:text-gray-800 font-thin text-gray-500 dark:text-gray-400 hover:bg-gray-100 flex items-center p-2 my-4 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200 justify-start"
+                href="#"
+              >
+                <span className="text-left">
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 2048 1792"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill="#5e72e4"
+                      d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z"
+                    ></path>
+                  </svg>
                 </span>
-              </span>
-            </CustomLink>
-            <CustomLink to="/dashboard/addservice">
-              <span className="text-left">
-                <svg
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  viewBox="0 0 1792 1792"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M1728 608v704q0 92-66 158t-158 66h-1216q-92 0-158-66t-66-158v-960q0-92 66-158t158-66h320q92 0 158 66t66 158v32h672q92 0 158 66t66 158z"></path>
-                </svg>
-              </span>
-              <span className="mx-4 text-sm font-normal">Resources</span>
-            </CustomLink>
-            <Link
-              className="w-full text-gray-400 flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start hover:text-gray-800 border-l-4 border-transparent"
-              to="/dashboard/users"
+                <span className="mx-4 text-md font-normal">Notifications</span>
+              </a>
+              <a
+                className="hover:text-gray-800 font-thin text-gray-500 dark:text-gray-400 hover:bg-gray-100 flex items-center p-2 my-4 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200 justify-start"
+                href="#"
+              >
+                <span className="text-left">
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    className="m-auto"
+                    viewBox="0 0 2048 1792"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill="#5e72e4"
+                      d="M685 483q16 0 27.5-11.5t11.5-27.5-11.5-27.5-27.5-11.5-27 11.5-11 27.5 11 27.5 27 11.5zm422 0q16 0 27-11.5t11-27.5-11-27.5-27-11.5-27.5 11.5-11.5 27.5 11.5 27.5 27.5 11.5zm-812 184q42 0 72 30t30 72v430q0 43-29.5 73t-72.5 30-73-30-30-73v-430q0-42 30-72t73-30zm1060 19v666q0 46-32 78t-77 32h-75v227q0 43-30 73t-73 30-73-30-30-73v-227h-138v227q0 43-30 73t-73 30q-42 0-72-30t-30-73l-1-227h-74q-46 0-78-32t-32-78v-666h918zm-232-405q107 55 171 153.5t64 215.5h-925q0-117 64-215.5t172-153.5l-71-131q-7-13 5-20 13-6 20 6l72 132q95-42 201-42t201 42l72-132q7-12 20-6 12 7 5 20zm477 488v430q0 43-30 73t-73 30q-42 0-72-30t-30-73v-430q0-43 30-72.5t72-29.5q43 0 73 29.5t30 72.5z"
+                    ></path>
+                  </svg>
+                </span>
+                <span className="mx-4 text-md font-normal">
+                  Campagne emailing
+                </span>
+              </a>
+            </div>
+            <div>
+              <p className="text-gray-300 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
+                STATISTIQUES
+              </p>
+              <a
+                className="hover:text-gray-800 font-thin text-gray-500 dark:text-gray-400 hover:bg-gray-100 flex items-center p-2 my-4 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200 justify-start"
+                href="#"
+              >
+                <span className="text-left">
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    viewBox="0 0 2048 1792"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill="#5e72e4"
+                      d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z"
+                    ></path>
+                  </svg>
+                </span>
+                <span className="mx-4 text-md font-normal">Nouveau client</span>
+              </a>
+              <a
+                className="hover:text-gray-800 font-thin text-gray-500 dark:text-gray-400 hover:bg-gray-100 flex items-center p-2 my-4 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200 justify-start"
+                href="#"
+              >
+                <span className="text-left">
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    className="m-auto"
+                    viewBox="0 0 2048 1792"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill="#5e72e4"
+                      d="M960 0l960 384v128h-128q0 26-20.5 45t-48.5 19h-1526q-28 0-48.5-19t-20.5-45h-128v-128zm-704 640h256v768h128v-768h256v768h128v-768h256v768h128v-768h256v768h59q28 0 48.5 19t20.5 45v64h-1664v-64q0-26 20.5-45t48.5-19h59v-768zm1595 960q28 0 48.5 19t20.5 45v128h-1920v-128q0-26 20.5-45t48.5-19h1782z"
+                    ></path>
+                  </svg>
+                </span>
+                <span className="mx-4 text-md font-normal">Recette</span>
+              </a>
+            </div>
+          </nav>
+          <div className="absolute bottom-0 my-10">
+            <a
+              className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-200 flex items-center py-2 px-8"
+              href="#"
             >
-              <span className="text-left">
-                <svg
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  viewBox="0 0 2048 1792"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M580 461q0-41-25-66t-66-25q-43 0-76 25.5t-33 65.5q0 39 33 64.5t76 25.5q41 0 66-24.5t25-65.5zm743 507q0-28-25.5-50t-65.5-22q-27 0-49.5 22.5t-22.5 49.5q0 28 22.5 50.5t49.5 22.5q40 0 65.5-22t25.5-51zm-236-507q0-41-24.5-66t-65.5-25q-43 0-76 25.5t-33 65.5q0 39 33 64.5t76 25.5q41 0 65.5-24.5t24.5-65.5zm635 507q0-28-26-50t-65-22q-27 0-49.5 22.5t-22.5 49.5q0 28 22.5 50.5t49.5 22.5q39 0 65-22t26-51zm-266-397q-31-4-70-4-169 0-311 77t-223.5 208.5-81.5 287.5q0 78 23 152-35 3-68 3-26 0-50-1.5t-55-6.5-44.5-7-54.5-10.5-50-10.5l-253 127 72-218q-290-203-290-490 0-169 97.5-311t264-223.5 363.5-81.5q176 0 332.5 66t262 182.5 136.5 260.5zm592 561q0 117-68.5 223.5t-185.5 193.5l55 181-199-109q-150 37-218 37-169 0-311-70.5t-223.5-191.5-81.5-264 81.5-264 223.5-191.5 311-70.5q161 0 303 70.5t227.5 192 85.5 263.5z"></path>
-                </svg>
-              </span>
-              <span className="mx-4 text-sm font-normal">Store feedback</span>
-            </Link>
+              <svg
+                width="20"
+                fill="currentColor"
+                height="20"
+                className="h-5 w-5"
+                viewBox="0 0 1792 1792"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1088 1256v240q0 16-12 28t-28 12h-240q-16 0-28-12t-12-28v-240q0-16 12-28t28-12h240q16 0 28 12t12 28zm316-600q0 54-15.5 101t-35 76.5-55 59.5-57.5 43.5-61 35.5q-41 23-68.5 65t-27.5 67q0 17-12 32.5t-28 15.5h-240q-15 0-25.5-18.5t-10.5-37.5v-45q0-83 65-156.5t143-108.5q59-27 84-56t25-76q0-42-46.5-74t-107.5-32q-65 0-108 29-35 25-107 115-13 16-31 16-12 0-25-8l-164-125q-13-10-15.5-25t5.5-28q160-266 464-266 80 0 161 31t146 83 106 127.5 41 158.5z"></path>
+              </svg>
+              <span className="mx-4 font-medium">Support</span>
+            </a>
           </div>
-        </nav>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

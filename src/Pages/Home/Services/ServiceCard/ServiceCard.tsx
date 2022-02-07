@@ -19,7 +19,7 @@ const ServiceCard = (props: any) => {
             {serviceDetails.serviceName}
           </p>
           <p className="text-gray-400 dark:text-gray-300 font-light text-md">
-            {serviceDetails.description.slice(0, 190)}...
+            {serviceDetails.description}...
           </p>
         </div>
         <Link
