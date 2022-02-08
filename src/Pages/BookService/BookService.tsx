@@ -8,12 +8,6 @@ const BookService = () => {
   const { user } = useAuth();
   const { serviceId } = useParams();
   const minDate = new Date().toISOString().slice(0, 16);
-
-  var d = new Date();
-  var curr_date = d.getDate();
-  console.log(d);
-  var tomo_date = d.getDate() + 10;
-  console.log(d);
   // const maxDate = tomo_date.toISOString().slice(0, 16);
 
   useEffect(() => {
@@ -39,6 +33,7 @@ const BookService = () => {
     formData.email = user.email;
     formData.serviceId = serviceId;
     formData.serviceName = serviceData.serviceName;
+    formData.status = true;
 
     axios
       .post("http://localhost:4000/bookingservice", formData)
@@ -116,7 +111,7 @@ const BookService = () => {
                     </label>
                     <input
                       type="text"
-                      name="street-address"
+                      name="address"
                       onChange={handleOnChange}
                       id="street-address"
                       autoComplete="street-address"

@@ -1,18 +1,27 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const AddAdminForm = () => {
-  const [loginData, setLoginData] = useState<any>({});
+  const [adminData, setAdminData] = useState<any>({});
   const handleOnChange = (e: any) => {
     const field = e.target.name;
     const value = e.target.value;
-    const data = { ...loginData };
+    const data = { ...adminData };
     data[field] = value;
-    setLoginData(data);
+    setAdminData(data);
   };
 
   const submitAdminForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(loginData);
+    axios
+      .put("http://localhost:4000/adduser/admin", adminData)
+      .then(function (res: any) {
+        console.log(res);
+      })
+      .catch(function (error: any) {
+        console.log(error);
+      });
+    console.log(adminData);
   };
   return (
     <div className=" dark:bg-gray-500">
@@ -68,7 +77,7 @@ const AddAdminForm = () => {
                       </label>
                       <input
                         type="text"
-                        name="email-address"
+                        name="email"
                         id="email-address"
                         autoComplete="email"
                         required

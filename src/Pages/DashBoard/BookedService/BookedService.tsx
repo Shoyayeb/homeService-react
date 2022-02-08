@@ -1,14 +1,30 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import userDefault from "../../../Assets/user-default.png";
-const UsersList = () => {
-  const [usersData, setUsersData] = useState<any>([]);
+import { Link } from "react-router-dom";
+
+const BookedService = () => {
+  const [serviceData, setServiceData] = useState<any>([]);
   useEffect(() => {
-    const url = `http://localhost:4000/allusers`;
+    const url = `http://localhost:4000/bookedservices`;
     axios.get(url).then((data: any) => {
-      setUsersData(data.data);
+      setServiceData(data.data);
     });
   }, []);
+  console.log("====================================");
+  console.log(serviceData);
+  console.log("====================================");
+  // const orders = [
+  //   {
+  //     name: "Jane Cooper",
+  //     title: "Regional Paradigm Technician",
+  //     department: "Optimization",
+  //     role: "Admin",
+  //     email: "jane.cooper@example.com",
+  //     image:
+  //       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+  //   },
+  //   // More people...
+  // ];
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -27,7 +43,7 @@ const UsersList = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Title
+                    Address
                   </th>
                   <th
                     scope="col"
@@ -39,7 +55,13 @@ const UsersList = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Role
+                    Service
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Time
                   </th>
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Edit</span>
@@ -47,48 +69,54 @@ const UsersList = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {usersData.map((user: any) => (
-                  <tr key={user.email}>
+                {serviceData.map((service: any) => (
+                  <tr key={service.email}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10">
-                          <img
-                            className="h-10 w-10 rounded-full"
-                            src={user.image || userDefault}
-                            alt=""
-                          />
-                        </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">
-                            {user.name}
+                            {service.name}
                           </div>
                           <div className="text-sm text-gray-500">
-                            {user.email}
+                            {service.email}
                           </div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{user.title}</div>
+                      <div className="text-sm text-gray-900">
+                        {service.address}
+                      </div>
                       <div className="text-sm text-gray-500">
-                        {user.department}
+                        {service.city}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        Active
-                      </span>
+                      {service.active ? (
+                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-700">
+                          Active
+                        </span>
+                      ) : (
+                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-700">
+                          Finished
+                        </span>
+                      )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {user.role}
+                      {service.serviceName}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">
+                        {service.date}
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a
-                        href="#"
+                      <Link
+                        to={`/orderedservice/${service._id}`}
                         className="text-indigo-600 hover:text-indigo-900"
                       >
                         Edit
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -101,4 +129,4 @@ const UsersList = () => {
   );
 };
 
-export default UsersList;
+export default BookedService;

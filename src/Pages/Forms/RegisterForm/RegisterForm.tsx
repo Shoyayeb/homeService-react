@@ -26,7 +26,7 @@ const RegisterForm = () => {
       registerData === {} ||
       !registerData.email ||
       !registerData.password ||
-      !registerData.name
+      !registerData.displayName
     ) {
       console.log("notEntered", registerData);
       setError("Please enter your information correctly");
@@ -35,7 +35,7 @@ const RegisterForm = () => {
       createUserByEmail(
         registerData.email,
         registerData.password,
-        registerData.name
+        registerData.displayName
       );
     }
   };
@@ -50,7 +50,7 @@ const RegisterForm = () => {
             type="text"
             onChange={handleOnChange}
             id="sign-up-name"
-            name="name"
+            name="displayName"
             aria-required={true}
             required={true}
             autoComplete="name"

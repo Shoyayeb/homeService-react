@@ -1,7 +1,9 @@
 import {
   IdentificationIcon,
   PlusCircleIcon,
+  ShieldCheckIcon,
   UserGroupIcon,
+  ViewListIcon,
 } from "@heroicons/react/outline";
 import React from "react";
 import { Link, LinkProps, useMatch, useResolvedPath } from "react-router-dom";
@@ -26,7 +28,7 @@ const DashBoardNav = () => {
   };
   return (
     <>
-      <div className="flex flex-col sm:flex-row sm:justify-around bg-white dark:bg-gray-800">
+      <div className="hidden md:flex flex-col sm:flex-row sm:justify-around  bg-white dark:bg-gray-800">
         <div className="w-72 h-screen">
           <nav className="mt-10 px-6">
             <CustomLink to="/dashboard">
@@ -57,6 +59,24 @@ const DashBoardNav = () => {
                   height="20"
                 />
                 <span className="mx-4 text-md font-normal">Add Service</span>
+              </CustomLink>
+              <CustomLink to="/dashboard/bookedservices">
+                <ViewListIcon
+                  className="text-indigo-500"
+                  width="20"
+                  height="20"
+                />
+                <span className="mx-4 text-md font-normal">
+                  Booked Services
+                </span>
+              </CustomLink>
+              <CustomLink to="/dashboard/addadmin">
+                <ShieldCheckIcon
+                  className="text-indigo-500"
+                  width="20"
+                  height="20"
+                />
+                <span className="mx-4 text-md font-normal">Add an Admin</span>
               </CustomLink>
             </div>
             <div>
