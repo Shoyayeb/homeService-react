@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 import AddAdminForm from "./../../Forms/AddAdminForm/AddAdminForm";
 import NotFound from "./../../NotFound/NotFound";
 import AddService from "./../AddService/AddService";
@@ -9,6 +10,8 @@ import DashBoardNav from "./../DashBoardNav/DashBoardNav";
 import UsersList from "./../UsersList/UsersList";
 
 const DashBoardRoot = () => {
+  const { user } = useAuth();
+  console.log(user.email);
   return (
     <main className="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
       <div className="flex items-start justify-between">

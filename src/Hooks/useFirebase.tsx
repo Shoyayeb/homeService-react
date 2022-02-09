@@ -11,16 +11,20 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import initializeFirebase from "../Firebase/firebase.init";
 
 initializeFirebase();
 const useFirebase = () => {
+  let location: any = useLocation();
   const [user, setUser] = useState<[] | {} | null>([]);
   const [error, setError] = useState<string>("");
+  const [modal, setModal] = useState<Boolean>(false);
+
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLogin, setIsLogin] = useState<boolean>(true);
-
+  const from = location.state?.from?.pathname || "/";
   const auth: any = getAuth();
   auth.useDeviceLanguage();
 
@@ -87,9 +91,12 @@ const useFirebase = () => {
       .then((userCredential) => {
         setError("");
         setShowLoginModal(false);
+        // Navigate({ from, replace });
+        Navigate(from);
       })
       .catch((error) => {
         setError(error.message);
+        setModal(true);
       });
   };
 
@@ -146,6 +153,8 @@ const useFirebase = () => {
     createUserByEmail,
     signOutUser,
     loginUserByEmail,
+    modal,
+    setModal,
   };
 };
 export default useFirebase;

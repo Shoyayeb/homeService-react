@@ -6,12 +6,12 @@ import logo from "../../../Assets/logo.png";
 import userDefault from "../../../Assets/user-default.png";
 import useAuth from "./../../../Hooks/useAuth";
 const Navbar = () => {
-  const { user, setShowLoginModal, signOutUser } = useAuth();
+  const { user, signOutUser } = useAuth();
   const navigation = [
     { name: "Home", to: "/home", current: true },
     { name: "Services", to: "/services", current: false },
     { name: "Hire Someone", to: "/hire_single", current: false },
-    { name: "About Us", to: "/about", current: false },
+    { name: "About Us", to: "/dashboard", current: false },
     { name: "Contact Us", to: "/login", current: false },
   ];
   function classNames(...classes: any) {
@@ -175,14 +175,14 @@ const Navbar = () => {
                 </div>
               ) : (
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button
-                    onClick={() => setShowLoginModal(true)}
+                  <Link
+                    to="/login"
                     type="button"
                     className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     <span className="sr-only">View notifications</span>
                     Sign In
-                  </button>
+                  </Link>
                 </div>
               )}
             </div>
