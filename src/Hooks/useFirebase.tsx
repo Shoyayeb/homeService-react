@@ -29,19 +29,20 @@ const useFirebase = () => {
 
   // google sign in
   const socialSignIn = (socialProvider: string) => {
+    setIsLoading(true);
     if (socialProvider === "google") {
       signInWithPopup(auth, googleProvider)
         .then((result: any) => {
           const user = result.user;
           setError("");
           setShowLoginModal(false);
-          console.log("=========");
-          console.log(user);
-          console.log("=========");
           saveUser(user.email, user.displayName, "put");
         })
         .catch((error) => {
           setError(error.message);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     } else if (socialProvider === "twitter") {
       signInWithPopup(auth, twitterProvider)
@@ -52,6 +53,9 @@ const useFirebase = () => {
         })
         .catch((error) => {
           setError(error.message);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
   };
