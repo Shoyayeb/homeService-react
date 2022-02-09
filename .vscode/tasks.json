@@ -5,7 +5,7 @@
 			"type": "npm",
 			"script": "start",
 			"problemMatcher": [],
-			"label": "npm: start",
+			"label": "yarn: start",
 			"detail": "react-scripts start"
 		}
 	]
