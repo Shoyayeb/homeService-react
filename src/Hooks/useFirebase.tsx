@@ -18,7 +18,7 @@ const useFirebase = () => {
   const [user, setUser] = useState<[] | {} | null>([]);
   const [error, setError] = useState<string>("");
   const [modal, setModal] = useState<Boolean>(false);
-
+  const [booked, setBooked] = useState<Boolean>(false);
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLogin, setIsLogin] = useState<boolean>(true);
@@ -47,6 +47,7 @@ const useFirebase = () => {
         })
         .catch((error) => {
           setError(error.message);
+          setModal(true);
         })
         .finally(() => {
           setIsLoading(false);
@@ -79,17 +80,18 @@ const useFirebase = () => {
           photoURL: null,
         });
         saveUser(email, name, "post");
-
         setShowLoginModal(false);
       })
       .catch((error) => {
         setError(error.message);
+        setModal(true);
       })
       .finally(() => setIsLoading(false));
   };
 
   // login user with email and password
   const loginUserByEmail = (email: string, password: string) => {
+    setIsLoading(true);
     return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setError("");
@@ -97,7 +99,8 @@ const useFirebase = () => {
       .catch((error) => {
         setError(error.message);
         setModal(true);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   // managing user
@@ -123,13 +126,11 @@ const useFirebase = () => {
     signOut(auth)
       .then(() => {
         setError("");
-        console.log("====================================");
         console.log("Sign out success");
-        console.log("====================================");
-        //   sign out successfully
       })
       .catch((error) => {
         setError(error.message);
+        setModal(true);
       })
       .finally(() => setIsLoading(false));
   };
@@ -149,6 +150,8 @@ const useFirebase = () => {
     setIsLogin,
     showLoginModal,
     setShowLoginModal,
+    booked,
+    setBooked,
     socialSignIn,
     createUserByEmail,
     signOutUser,

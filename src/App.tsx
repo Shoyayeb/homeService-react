@@ -7,7 +7,7 @@ import AddAdminForm from "./Pages/Forms/AddAdminForm/AddAdminForm";
 import Home from "./Pages/Home/Home/Home";
 import LoginRegisterRoot from "./Pages/LoginRegister/LoginRegisterRoot/LoginRegisterRoot";
 import NotFound from "./Pages/NotFound/NotFound";
-import PrivateOutlet from "./Pages/PrivateRoute/PrivateOutlet";
+import PrivateOutlet from "./Pages/PrivateOutlet/PrivateOutlet";
 import Footer from "./Pages/Shared/Footer/Footer";
 import ErrorModal from "./Pages/Shared/Modals/ErrorModal";
 import Navbar from "./Pages/Shared/Navbar/Navbar";

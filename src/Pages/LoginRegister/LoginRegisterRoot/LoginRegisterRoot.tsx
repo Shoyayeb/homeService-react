@@ -5,11 +5,10 @@ import useAuth from "../../../Hooks/useAuth";
 import LoginForm from "./../../Forms/LoginForm/LoginForm";
 import RegisterForm from "./../../Forms/RegisterForm/RegisterForm";
 const LoginRegisterRoot = () => {
-  const { isLogin, setIsLogin, socialSignIn, error, user } = useAuth();
+  const { isLogin, setIsLogin, socialSignIn } = useAuth();
   const navigate = useNavigate();
   const location: any = useLocation();
-  const redirect_uri = location.state?.from || "/home";
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from || "/home";
   const changeForm = () => {
     if (isLogin) {
       setIsLogin(false);
@@ -20,7 +19,7 @@ const LoginRegisterRoot = () => {
 
   const logiinWithSocial = (provider: string) => {
     socialSignIn(provider).then((result: any) => {
-      navigate(redirect_uri);
+      navigate(from);
     });
   };
   return (
@@ -86,6 +85,18 @@ const LoginRegisterRoot = () => {
             </button>
           </div>
           {isLogin ? <LoginForm /> : <RegisterForm />}
+          <div className="flex items-center justify-center mt-6">
+            <button
+              className="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white"
+              onClick={changeForm}
+            >
+              <span className="ml-2">
+                {isLogin
+                  ? `You Don't Have An Account?`
+                  : "Have an Account Already?"}
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
