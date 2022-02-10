@@ -1,11 +1,22 @@
 import { KeyIcon, MailIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 
 const LoginForm = () => {
   const { setError, loginUserByEmail, isLoading } = useAuth();
   const [loginData, setLoginData] = useState<any>({});
   const { isLogin, setIsLogin } = useAuth();
+  const navigate = useNavigate();
+  const location: any = useLocation();
+  const redirect_uri = location.state?.from || "/home";
+  const emailSignIn = () => {
+    loginUserByEmail(loginData.email, loginData.password).then(
+      (result: any) => {
+        navigate(redirect_uri);
+      }
+    );
+  };
   const handleOnChange = (e: any) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -20,8 +31,8 @@ const LoginForm = () => {
     if (loginData === {} || !loginData.email || !loginData.password) {
       setError("Please Enter Your Email And Password");
     } else {
-      console.log("creating");
-      loginUserByEmail(loginData.email, loginData.password);
+      console.log("logging in");
+      emailSignIn();
     }
   };
 

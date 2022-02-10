@@ -8,15 +8,13 @@ import {
   signInWithPopup,
   signOut,
   TwitterAuthProvider,
-  updateProfile,
+  updateProfile
 } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { Navigate, useLocation } from "react-router-dom";
 import initializeFirebase from "../Firebase/firebase.init";
 
 initializeFirebase();
 const useFirebase = () => {
-  let location: any = useLocation();
   const [user, setUser] = useState<[] | {} | null>([]);
   const [error, setError] = useState<string>("");
   const [modal, setModal] = useState<Boolean>(false);
@@ -24,7 +22,7 @@ const useFirebase = () => {
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLogin, setIsLogin] = useState<boolean>(true);
-  const from = location.state?.from?.pathname || "/";
+
   const auth: any = getAuth();
   auth.useDeviceLanguage();
 
@@ -34,8 +32,13 @@ const useFirebase = () => {
   // google sign in
   const socialSignIn = (socialProvider: string) => {
     setIsLoading(true);
+    // /////////
+    //
+    // conditional variable needs to set here
+    //
+    // /////////
     if (socialProvider === "google") {
-      signInWithPopup(auth, googleProvider)
+      return signInWithPopup(auth, googleProvider)
         .then((result: any) => {
           const user = result.user;
           setError("");
@@ -49,7 +52,7 @@ const useFirebase = () => {
           setIsLoading(false);
         });
     } else if (socialProvider === "twitter") {
-      signInWithPopup(auth, twitterProvider)
+      return signInWithPopup(auth, twitterProvider)
         .then((result: any) => {
           setError("");
           setShowLoginModal(false);
@@ -67,7 +70,7 @@ const useFirebase = () => {
   //   create user with email and password
   const createUserByEmail = (email: string, password: string, name: string) => {
     setIsLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential: any) => {
         console.log("user created", auth.currentUser);
         setError("");
@@ -87,12 +90,9 @@ const useFirebase = () => {
 
   // login user with email and password
   const loginUserByEmail = (email: string, password: string) => {
-    signInWithEmailAndPassword(auth, email, password)
+    return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setError("");
-        setShowLoginModal(false);
-        // Navigate({ from, replace });
-        Navigate(from);
       })
       .catch((error) => {
         setError(error.message);

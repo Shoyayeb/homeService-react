@@ -10,6 +10,7 @@ const ServiceCard = (props: any) => {
           alt="blog"
           src={serviceDetails.serviceImageLink}
           className="max-h-40 w-full object-cover"
+          loading="lazy"
         />
         <div className="bg-white dark:bg-gray-800 w-full p-4">
           <p className="text-pink-500 text-md font-medium">
