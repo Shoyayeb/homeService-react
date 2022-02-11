@@ -18,7 +18,6 @@ const useFirebase = () => {
   const [user, setUser] = useState<[] | {} | null>([]);
   const [error, setError] = useState<string>("");
   const [modal, setModal] = useState<Boolean>(false);
-  const [booked, setBooked] = useState<Boolean>(false);
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLogin, setIsLogin] = useState<boolean>(true);
@@ -140,7 +139,6 @@ const useFirebase = () => {
     const data = { email, displayName };
     axios({ method, url, data });
   };
-
   return {
     user,
     error,
@@ -150,8 +148,6 @@ const useFirebase = () => {
     setIsLogin,
     showLoginModal,
     setShowLoginModal,
-    booked,
-    setBooked,
     socialSignIn,
     createUserByEmail,
     signOutUser,

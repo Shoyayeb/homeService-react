@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import DoneModal from "../../Shared/Modals/DoneModal";
 
 const AddAdminForm = () => {
   const [adminData, setAdminData] = useState<any>({});
+  const [done, setDone] = useState<Boolean>(false);
   const handleOnChange = (e: any) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -16,15 +18,15 @@ const AddAdminForm = () => {
     axios
       .put("http://localhost:4000/adduser/admin", adminData)
       .then(function (res: any) {
-        console.log(res);
+        setDone(true);
       })
       .catch(function (error: any) {
         console.log(error);
       });
-    console.log(adminData);
   };
   return (
     <div className=" dark:bg-gray-500">
+      {done ? <DoneModal></DoneModal> : ""}
       <div className="hidden sm:block" aria-hidden="true">
         <div className="py-5">
           <div className="border-t border-gray-200" />
@@ -53,51 +55,17 @@ const AddAdminForm = () => {
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 ">
                       <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        required
-                        autoComplete="given-name"
-                        onChange={handleOnChange}
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                    </div>
-                    <div className="col-span-6 ">
-                      <label
                         htmlFor="email-address"
                         className="block text-sm font-medium text-gray-700"
                       >
                         Email address
                       </label>
                       <input
-                        type="text"
+                        type="email"
                         name="email"
-                        id="email-address"
+                        id="email"
                         autoComplete="email"
                         required
-                        onChange={handleOnChange}
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                    </div>
-                    <div className="col-span-6 ">
-                      <label
-                        htmlFor="password"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        required
-                        autoComplete="password"
                         onChange={handleOnChange}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
