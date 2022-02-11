@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import React from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
+import useAuth from "../../../Hooks/useAuth";
 
 const PrivateOutlet = () => {
   const { user, isLoading } = useAuth();

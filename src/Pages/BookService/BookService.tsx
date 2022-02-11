@@ -34,6 +34,7 @@ const BookService = () => {
     e.preventDefault();
     formData.name = user.displayName;
     formData.email = user.email;
+    formData.uid = user.uid;
     formData.serviceId = serviceId;
     formData.serviceName = serviceData.serviceName;
     formData.status = true;

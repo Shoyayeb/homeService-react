@@ -15,9 +15,10 @@ import initializeFirebase from "../Firebase/firebase.init";
 
 initializeFirebase();
 const useFirebase = () => {
-  const [user, setUser] = useState<[] | {} | null>([]);
+  const [user, setUser] = useState<any>([]);
   const [error, setError] = useState<string>("");
   const [modal, setModal] = useState<Boolean>(false);
+  const [admin, setAdmin] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLogin, setIsLogin] = useState<boolean>(true);
@@ -73,6 +74,8 @@ const useFirebase = () => {
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential: any) => {
         console.log("user created", auth.currentUser);
+        const newUser = { email, displayName: name };
+        setUser(newUser);
         setError("");
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -119,6 +122,19 @@ const useFirebase = () => {
     return () => unsubscribe();
   }, [auth]);
 
+  useEffect(() => {
+    const url = `http://localhost:4000/allusers/${user.email}`;
+    console.log("====================================");
+    console.log(user);
+    console.log("====================================");
+    axios.get(url).then((data: any) => {
+      setAdmin(data.data);
+      console.log("====================================");
+      console.log(admin);
+      console.log("====================================");
+    });
+  }, [user.email]);
+
   //   sign out
   const signOutUser = () => {
     setIsLoading(true);
@@ -147,6 +163,8 @@ const useFirebase = () => {
     isLogin,
     setIsLogin,
     showLoginModal,
+    admin,
+    setAdmin,
     setShowLoginModal,
     socialSignIn,
     createUserByEmail,

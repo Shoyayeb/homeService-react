@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import AdminRoute from "../../LoginRegister/AdminRoute/AdminRoute";
+import MyServices from "../MyServices/MyServices";
 import AddAdminForm from "./../../Forms/AddAdminForm/AddAdminForm";
 import NotFound from "./../../NotFound/NotFound";
 import AddService from "./../AddService/AddService";
@@ -18,9 +20,17 @@ const DashBoardRoot = () => {
         <div className="w-full md:space-y-4 md:px-4 md:py-3">
           <Routes>
             <Route path="/" element={<DashBoardHome />} />
+            <Route path="/myservices" element={<MyServices />} />
             <Route path="/addservice" element={<AddService />} />
             <Route path="/addadmin" element={<AddAdminForm />} />
-            <Route path="/bookedservices" element={<BookedService />} />
+            <Route
+              path="/bookedservices"
+              element={
+                <AdminRoute>
+                  <BookedService />
+                </AdminRoute>
+              }
+            />
             <Route path="/users" element={<UsersList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
