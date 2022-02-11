@@ -37,7 +37,8 @@ const BookService = () => {
     formData.uid = user.uid;
     formData.serviceId = serviceId;
     formData.serviceName = serviceData.serviceName;
-    formData.status = true;
+    formData.paid = false;
+    formData.price = serviceData.servicePrice;
     axios
       .post("http://localhost:4000/bookingservice", formData)
       .then(function (res: any) {
