@@ -18,7 +18,7 @@ const useFirebase = () => {
   const [user, setUser] = useState<any>([]);
   const [error, setError] = useState<string>("");
   const [modal, setModal] = useState<Boolean>(false);
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState({});
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isLogin, setIsLogin] = useState<boolean>(true);
@@ -110,12 +110,9 @@ const useFirebase = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        console.log("====================================");
         console.log(user);
-        console.log("====================================");
       } else {
         setUser({});
-        console.log(user);
       }
       setIsLoading(false);
     });
@@ -124,16 +121,11 @@ const useFirebase = () => {
 
   useEffect(() => {
     const url = `http://localhost:4000/allusers/${user.email}`;
-    console.log("====================================");
-    console.log(user);
-    console.log("====================================");
     axios.get(url).then((data: any) => {
+      console.log("lllllllllllllll", url);
       setAdmin(data.data);
-      console.log("====================================");
-      console.log(admin);
-      console.log("====================================");
     });
-  }, [user.email]);
+  }, [user]);
 
   //   sign out
   const signOutUser = () => {

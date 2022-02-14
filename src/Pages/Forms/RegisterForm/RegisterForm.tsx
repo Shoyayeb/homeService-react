@@ -4,17 +4,31 @@ import {
   MailIcon,
 } from "@heroicons/react/outline";
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 
 const RegisterForm = () => {
   const [registerData, setRegisterData] = useState<any>({});
   const { setError, createUserByEmail } = useAuth();
+  const navigate = useNavigate();
+  const location: any = useLocation();
+  const redirect_uri = location.state?.from || "/home";
   const handleOnChange = (e: any) => {
     const field = e.target.name;
     const value = e.target.value;
     const data = { ...registerData };
     data[field] = value;
     setRegisterData(data);
+  };
+
+  const emailRegister = () => {
+    createUserByEmail(
+      registerData.email,
+      registerData.password,
+      registerData.displayName
+    ).then((result: any) => {
+      navigate(redirect_uri);
+    });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,11 +44,7 @@ const RegisterForm = () => {
       setError("Please enter your information correctly");
     } else {
       console.log("creating");
-      createUserByEmail(
-        registerData.email,
-        registerData.password,
-        registerData.displayName
-      );
+      emailRegister();
     }
   };
   return (

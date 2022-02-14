@@ -4,9 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 
 const LoginForm = () => {
-  const { setError, loginUserByEmail, isLoading } = useAuth();
+  const { setError, loginUserByEmail } = useAuth();
   const [loginData, setLoginData] = useState<any>({});
-  const { isLogin } = useAuth();
   const navigate = useNavigate();
   const location: any = useLocation();
   const redirect_uri = location.state?.from || "/home";

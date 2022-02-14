@@ -1,10 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
-import PaymentModal from "../../Shared/Modals/PaymentModal";
 
 const MyServices = () => {
   const [serviceData, setServiceData] = useState<any>([]);
@@ -167,9 +165,10 @@ const MyServices = () => {
                             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                           >
-                            <Elements stripe={stripePromise}>
+                            {/* <Elements stripe={stripePromise}>
                               <PaymentModal service={service} />
-                            </Elements>
+                            </Elements> */}
+                            <p>hi</p>
                           </Transition.Child>
                         </div>
                       </Dialog>
