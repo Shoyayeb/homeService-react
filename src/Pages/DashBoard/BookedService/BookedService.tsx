@@ -9,7 +9,6 @@ const BookedService = () => {
   const removeService = (id: string) => {
     const deleteUrl = `http://localhost:4000/removeservice/${id}`;
     axios.delete(deleteUrl).then((data: any) => {
-      console.log(data);
       if (data.data.deletedCount > 0) {
         const remaining = serviceData.filter(
           (restPlan: any) => restPlan._id !== id
@@ -24,9 +23,6 @@ const BookedService = () => {
       setServiceData(data.data);
     });
   }, []);
-  console.log("====================================");
-  console.log(serviceData);
-  console.log("====================================");
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

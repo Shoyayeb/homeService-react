@@ -17,10 +17,9 @@ const BookService = () => {
   useEffect(() => {
     const url = `http://localhost:4000/service/${serviceId}`;
     axios.get(url).then((data: any) => {
-      console.log(data);
       setServiceData(data.data);
     });
-  }, []);
+  }, [serviceId]);
 
   const handleOnChange = (e: any) => {
     const field = e.target.name;
@@ -42,7 +41,6 @@ const BookService = () => {
     axios
       .post("http://localhost:4000/bookingservice", formData)
       .then(function (res: any) {
-        console.log(res);
         setBooked(true);
       })
       .catch(function (error: any) {

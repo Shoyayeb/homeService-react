@@ -19,9 +19,7 @@ const LoginRegisterModal = () => {
     setShowLoginModal,
   } = useAuth();
   if (error) {
-    console.log("====================================");
     console.log(error);
-    console.log("====================================");
   }
   const changeForm = () => {
     if (isLogin) {

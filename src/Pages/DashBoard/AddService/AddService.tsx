@@ -16,16 +16,13 @@ const AddService = () => {
 
   const submitNewService = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(serviceData);
 
     axios
       .post("http://localhost:4000/addservice", serviceData)
       .then(function (res: any) {
-        console.log(res);
         setDone(true);
       })
       .catch(function (error: any) {
-        console.log(error);
         setDone(false);
       });
   };

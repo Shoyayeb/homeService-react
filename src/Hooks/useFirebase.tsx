@@ -73,7 +73,6 @@ const useFirebase = () => {
     setIsLoading(true);
     return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential: any) => {
-        console.log("user created", auth.currentUser);
         const newUser = { email, displayName: name };
         setUser(newUser);
         setError("");
@@ -122,7 +121,6 @@ const useFirebase = () => {
   useEffect(() => {
     const url = `http://localhost:4000/allusers/${user.email}`;
     axios.get(url).then((data: any) => {
-      console.log("lllllllllllllll", url);
       setAdmin(data.data);
     });
   }, [user]);

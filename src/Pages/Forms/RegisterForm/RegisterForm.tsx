@@ -1,7 +1,7 @@
 import {
   IdentificationIcon,
   KeyIcon,
-  MailIcon,
+  MailIcon
 } from "@heroicons/react/outline";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -33,17 +33,14 @@ const RegisterForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(registerData);
     if (
       registerData === {} ||
       !registerData.email ||
       !registerData.password ||
       !registerData.displayName
     ) {
-      console.log("notEntered", registerData);
       setError("Please enter your information correctly");
     } else {
-      console.log("creating");
       emailRegister();
     }
   };

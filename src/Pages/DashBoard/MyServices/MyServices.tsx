@@ -31,7 +31,7 @@ const MyServices = () => {
     axios.get(url).then((data: any) => {
       setServiceData(data.data);
     });
-  }, []);
+  }, [user.uid]);
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

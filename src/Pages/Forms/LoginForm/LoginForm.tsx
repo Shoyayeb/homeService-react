@@ -26,11 +26,9 @@ const LoginForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(loginData);
     if (loginData === {} || !loginData.email || !loginData.password) {
       setError("Please Enter Your Email And Password");
     } else {
-      console.log("logging in");
       emailSignIn();
     }
   };
