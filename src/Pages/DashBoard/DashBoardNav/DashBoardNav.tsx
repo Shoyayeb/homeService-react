@@ -1,4 +1,5 @@
 import {
+  FilterIcon,
   IdentificationIcon,
   PlusCircleIcon,
   QuestionMarkCircleIcon,
@@ -6,6 +7,7 @@ import {
   UserGroupIcon,
   ViewListIcon,
 } from "@heroicons/react/outline";
+import { AddModerator } from "@mui/icons-material";
 import React from "react";
 import { Link, LinkProps, useMatch, useResolvedPath } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
@@ -13,6 +15,74 @@ import Spinner from "../../Shared/Spinner/Spinner";
 
 const DashBoardNav = () => {
   const { admin, isLoading } = useAuth();
+  const userLinks = [
+    {
+      name: "Users",
+      url: "/dashboard/admin/users",
+      icon: (
+        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
+      ),
+    },
+    {
+      name: "Booked Services",
+      url: "/dashboard/admin/bookedservices",
+      icon: (
+        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
+      ),
+    },
+    {
+      name: "All Services",
+      url: "/dashboard/admin/allservice",
+      icon: (
+        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
+      ),
+    },
+    {
+      name: "Add Service",
+      url: "/dashboard/admin/addservice",
+      icon: (
+        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
+      ),
+    },
+    {
+      name: "Add Admin",
+      url: "/dashboard/admin/addadmin",
+      icon: (
+        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
+      ),
+    },
+  ];
+  const adminLinks = [
+    {
+      name: "Users",
+      url: "/dashboard/admin/users",
+      icon: (
+        <UserGroupIcon className="text-indigo-500" width="20" height="20" />
+      ),
+    },
+    {
+      name: "Booked Services",
+      url: "/dashboard/admin/bookedservices",
+      icon: <ViewListIcon className="text-indigo-500" width="20" height="20" />,
+    },
+    {
+      name: "All Services",
+      url: "/dashboard/admin/allservice",
+      icon: <FilterIcon className="text-indigo-500" width="20" height="20" />,
+    },
+    {
+      name: "Add Service",
+      url: "/dashboard/admin/addservice",
+      icon: (
+        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
+      ),
+    },
+    {
+      name: "Add Admin",
+      url: "/dashboard/admin/addadmin",
+      icon: <AddModerator className="text-indigo-500" width="20" height="20" />,
+    },
+  ];
   const CustomLink = ({ children, to, ...props }: LinkProps) => {
     let resolved = useResolvedPath(to);
     let match = useMatch({ path: resolved.pathname, end: true });
@@ -51,41 +121,14 @@ const DashBoardNav = () => {
                 <p className="text-gray-300 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
                   Admin Services
                 </p>
-                <CustomLink to="/dashboard/users">
-                  <UserGroupIcon
-                    className="text-indigo-500"
-                    width="20"
-                    height="20"
-                  />
-                  <span className="mx-4 text-md font-normal">Users</span>
-                </CustomLink>
-
-                <CustomLink to="/dashboard/addservice">
-                  <PlusCircleIcon
-                    className="text-indigo-500"
-                    width="20"
-                    height="20"
-                  />
-                  <span className="mx-4 text-md font-normal">Add Service</span>
-                </CustomLink>
-                <CustomLink to="/dashboard/bookedservices">
-                  <ViewListIcon
-                    className="text-indigo-500"
-                    width="20"
-                    height="20"
-                  />
-                  <span className="mx-4 text-md font-normal">
-                    Booked Services
-                  </span>
-                </CustomLink>
-                <CustomLink to="/dashboard/addadmin">
-                  <ShieldCheckIcon
-                    className="text-indigo-500"
-                    width="20"
-                    height="20"
-                  />
-                  <span className="mx-4 text-md font-normal">Add an Admin</span>
-                </CustomLink>
+                {adminLinks.map((link) => (
+                  <CustomLink to={link.url} key={link.url}>
+                    {link.icon}
+                    <span className="mx-4 text-md font-normal">
+                      {link.name}
+                    </span>
+                  </CustomLink>
+                ))}
               </div>
             ) : (
               <div>

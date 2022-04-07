@@ -26,7 +26,7 @@ const DashBoardRoot = () => {
             <Route path="/" element={<DashBoardHome />} />
             <Route path="/myservices" element={<MyServices />} />
             <Route
-              path="/addservice"
+              path="/admin/addservice"
               element={
                 <AdminRoute>
                   <AddService />
@@ -34,7 +34,7 @@ const DashBoardRoot = () => {
               }
             />
             <Route
-              path="/addadmin"
+              path="/admin/addadmin"
               element={
                 <AdminRoute>
                   <AddAdminForm />
@@ -42,7 +42,7 @@ const DashBoardRoot = () => {
               }
             />
             <Route
-              path="/bookedservices"
+              path="/admin/bookedservices"
               element={
                 <AdminRoute>
                   <BookedService />
@@ -50,7 +50,7 @@ const DashBoardRoot = () => {
               }
             />
             <Route
-              path="/users"
+              path="/admin/users"
               element={
                 <AdminRoute>
                   <UsersList />
