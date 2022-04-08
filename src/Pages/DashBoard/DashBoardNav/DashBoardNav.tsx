@@ -16,36 +16,22 @@ const DashBoardNav = () => {
   const { admin, isLoading } = useAuth();
   const userLinks = [
     {
-      name: "Users",
-      url: "/dashboard/admin/users",
+      name: "Profile",
+      url: "/dashboard/profile",
       icon: (
         <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
       ),
     },
     {
-      name: "Booked Services",
-      url: "/dashboard/admin/bookedservices",
+      name: "Previous Bookings",
+      url: "/dashboard/bookings",
       icon: (
         <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
       ),
     },
     {
-      name: "All Services",
-      url: "/dashboard/admin/allservice",
-      icon: (
-        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
-      ),
-    },
-    {
-      name: "Add Service",
-      url: "/dashboard/admin/addservice",
-      icon: (
-        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
-      ),
-    },
-    {
-      name: "Add Admin",
-      url: "/dashboard/admin/addadmin",
+      name: "Payment System",
+      url: "/dashboard/payment_system",
       icon: (
         <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
       ),
@@ -138,36 +124,14 @@ const DashBoardNav = () => {
                   <p className="text-gray-300 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
                     Users Services
                   </p>
-                  <CustomLink to="/dashboard/myservices">
-                    <ShieldCheckIcon
-                      className="text-indigo-500"
-                      width="20"
-                      height="20"
-                    />
-                    <span className="mx-4 text-md font-normal">
-                      My Services
-                    </span>
-                  </CustomLink>
-                  <CustomLink to="/dashboard/addadmin">
-                    <ShieldCheckIcon
-                      className="text-indigo-500"
-                      width="20"
-                      height="20"
-                    />
-                    <span className="mx-4 text-md font-normal">
-                      Payment Method
-                    </span>
-                  </CustomLink>
-                  <CustomLink to="/dashboard/profile">
-                    <ShieldCheckIcon
-                      className="text-indigo-500"
-                      width="20"
-                      height="20"
-                    />
-                    <span className="mx-4 text-md font-normal">
-                      Edit Profile
-                    </span>
-                  </CustomLink>
+                  {userLinks.map((link) => (
+                    <CustomLink to={link.url} key={link.url}>
+                      {link.icon}
+                      <span className="mx-4 text-md font-normal">
+                        {link.name}
+                      </span>
+                    </CustomLink>
+                  ))}
                 </div>
                 <div>
                   <p className="text-gray-300 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
@@ -179,7 +143,9 @@ const DashBoardNav = () => {
                       width="20"
                       height="20"
                     />
-                    <span className="mx-4 text-md font-normal">Admin</span>
+                    <span className="mx-4 text-md font-normal">
+                      Change Address
+                    </span>
                   </CustomLink>
                   <CustomLink to="/dashboard/addadmin">
                     <ShieldCheckIcon
@@ -187,7 +153,7 @@ const DashBoardNav = () => {
                       width="20"
                       height="20"
                     />
-                    <span className="mx-4 text-md font-normal">Add a</span>
+                    <span className="mx-4 text-md font-normal">Reviews</span>
                   </CustomLink>
                 </div>
               </div>
@@ -204,7 +170,7 @@ const DashBoardNav = () => {
                 className="h-5 w-5"
               />
 
-              <span className="mx-4 font-medium">Support</span>
+              <span className="mx-4 font-medium">Log out</span>
             </CustomLink>
           </div>
         </div>
