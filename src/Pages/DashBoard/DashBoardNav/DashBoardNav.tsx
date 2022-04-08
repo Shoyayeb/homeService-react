@@ -7,7 +7,6 @@ import {
   UserGroupIcon,
   ViewListIcon,
 } from "@heroicons/react/outline";
-import { AddModerator } from "@mui/icons-material";
 import React from "react";
 import { Link, LinkProps, useMatch, useResolvedPath } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
@@ -80,7 +79,9 @@ const DashBoardNav = () => {
     {
       name: "Add Admin",
       url: "/dashboard/admin/addadmin",
-      icon: <AddModerator className="text-indigo-500" width="20" height="20" />,
+      icon: (
+        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
+      ),
     },
   ];
   const CustomLink = ({ children, to, ...props }: LinkProps) => {
