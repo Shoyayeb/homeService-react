@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SmallServiceCard = ({ serviceDetails }: any) => {
+const SmallServiceCard = ({ serviceDetails, setOpen, setRemoveId }: any) => {
   return (
     <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto border-2 p-1 border-gray-200">
       <div className="flex flex-row items-start gap-4">
@@ -33,7 +33,10 @@ const SmallServiceCard = ({ serviceDetails }: any) => {
           Update
         </Link>
         <button
-          //   onClick={removeModal}
+          onClick={() => {
+            setRemoveId(serviceDetails._id);
+            setOpen(true);
+          }}
           type="button"
           className="w-1/2 px-4 py-2 text-base border rounded-lg text-white bg-red-500 hover:bg-red-600 "
         >

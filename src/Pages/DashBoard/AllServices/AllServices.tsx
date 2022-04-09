@@ -9,23 +9,24 @@ const AllServices = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
+  const [removeId, setRemoveId] = useState("");
   const cancelButtonRef = useRef(null);
-  const removeModal = () => {
-    setOpen(true);
-  };
-  // deleting a booked plan
+
+  // deleting a service
   const removePlan = () => {
-    // const url = `https://calida-tour-planner.herokuapp.com/plans/${planId}`;
-    // fetch(url, {
-    //   method: "DELETE",
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.deletedCount > 0) {
-    //       const remaining = plans.filter((restPlan) => restPlan._id !== planId);
-    //       setPlans(remaining);
-    //     }
-    //   });
+    const url = `http://localhost:4000/services/${removeId}`;
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          const remaining = services.filter(
+            (restPlan: any) => restPlan._id !== removeId
+          );
+          setServices(remaining);
+        }
+      });
     setOpen(false);
   };
   useEffect(() => {
@@ -138,6 +139,7 @@ const AllServices = () => {
             {services.map((service: any) => (
               <SmallServiceCard
                 setOpen={setOpen}
+                setRemoveId={setRemoveId}
                 key={service._id}
                 serviceDetails={service}
               ></SmallServiceCard>
@@ -147,6 +149,6 @@ const AllServices = () => {
       </div>
     </div>
   );
-};
+};;
 
 export default AllServices;
