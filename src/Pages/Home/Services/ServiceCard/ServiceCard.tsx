@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ServiceCard = (props: any) => {
-  const { serviceDetails } = props;
+const ServiceCard = ({ serviceDetails }: any) => {
   return (
     <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
       <div className="w-full block h-full">

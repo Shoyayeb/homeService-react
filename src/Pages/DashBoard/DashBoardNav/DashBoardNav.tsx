@@ -39,6 +39,22 @@ const DashBoardNav = () => {
   ];
   const adminLinks = [
     {
+      name: "Add Service",
+      url: "/dashboard/admin/addservice",
+      icon: (
+        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
+      ),
+    },
+    {
+      name: "Add Admin",
+      url: "/dashboard/admin/addadmin",
+      icon: (
+        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
+      ),
+    },
+  ];
+  const dataLinks = [
+    {
       name: "Users",
       url: "/dashboard/admin/users",
       icon: (
@@ -54,20 +70,6 @@ const DashBoardNav = () => {
       name: "All Services",
       url: "/dashboard/admin/allservice",
       icon: <FilterIcon className="text-indigo-500" width="20" height="20" />,
-    },
-    {
-      name: "Add Service",
-      url: "/dashboard/admin/addservice",
-      icon: (
-        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
-      ),
-    },
-    {
-      name: "Add Admin",
-      url: "/dashboard/admin/addadmin",
-      icon: (
-        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
-      ),
     },
   ];
   const CustomLink = ({ children, to, ...props }: LinkProps) => {
@@ -105,17 +107,32 @@ const DashBoardNav = () => {
             </CustomLink>
             {admin.admin ? (
               <div>
-                <p className="text-gray-300 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
-                  Admin Services
-                </p>
-                {adminLinks.map((link) => (
-                  <CustomLink to={link.url} key={link.url}>
-                    {link.icon}
-                    <span className="mx-4 text-md font-normal">
-                      {link.name}
-                    </span>
-                  </CustomLink>
-                ))}
+                <div>
+                  <p className="text-gray-300 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
+                    Data Visualization
+                  </p>
+                  {dataLinks.map((link) => (
+                    <CustomLink to={link.url} key={link.url}>
+                      {link.icon}
+                      <span className="mx-4 text-md font-normal">
+                        {link.name}
+                      </span>
+                    </CustomLink>
+                  ))}
+                </div>
+                <div>
+                  <p className="text-gray-300 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
+                    Admin Service
+                  </p>
+                  {adminLinks.map((link) => (
+                    <CustomLink to={link.url} key={link.url}>
+                      {link.icon}
+                      <span className="mx-4 text-md font-normal">
+                        {link.name}
+                      </span>
+                    </CustomLink>
+                  ))}
+                </div>
               </div>
             ) : (
               <div>

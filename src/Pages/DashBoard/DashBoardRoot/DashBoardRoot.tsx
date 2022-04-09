@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import AdminRoute from "../../LoginRegister/AdminRoute/AdminRoute";
 import Spinner from "../../Shared/Spinner/Spinner";
+import AllServices from "../AllServices/AllServices";
 import MyServices from "../MyServices/MyServices";
 import AddAdminForm from "./../../Forms/AddAdminForm/AddAdminForm";
 import NotFound from "./../../NotFound/NotFound";
@@ -18,10 +19,10 @@ const DashBoardRoot = () => {
     return <Spinner />;
   }
   return (
-    <main className="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
+    <main className="bg-gray-100 dark:bg-gray-800 h-screen ">
       <div className="flex items-start justify-between">
         <DashBoardNav />
-        <div className="w-full md:space-y-4 md:px-4 md:py-3">
+        <div className=" md:space-y-4 md:px-4 md:py-3 mx-auto max-h-screen overflow-y-scroll">
           <Routes>
             <Route path="/" element={<DashBoardHome />} />
             <Route path="/myservices" element={<MyServices />} />
@@ -46,6 +47,14 @@ const DashBoardRoot = () => {
               element={
                 <AdminRoute>
                   <BookedService />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/admin/allservice"
+              element={
+                <AdminRoute>
+                  <AllServices />
                 </AdminRoute>
               }
             />
