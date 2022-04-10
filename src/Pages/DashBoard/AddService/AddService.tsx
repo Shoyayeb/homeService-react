@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import DoneModal from "../../Shared/Modals/DoneModal";
+import useAuth from "../../../Hooks/useAuth";
 
 const AddService = () => {
   const [serviceData, setServiceData] = useState<any>({});
   const [done, setDone] = useState<boolean>(false);
+  const { user } = useAuth();
   // const [done, setDone] = useState<Boolean>(false);
   const handleOnChange = (e: any) => {
     const field = e.target.name;
@@ -16,7 +18,7 @@ const AddService = () => {
 
   const submitNewService = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    serviceData.addedBy = user.email;
     axios
       .post("http://localhost:4000/addservice", serviceData)
       .then(function (res: any) {

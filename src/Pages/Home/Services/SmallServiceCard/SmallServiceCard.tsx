@@ -16,7 +16,7 @@ const SmallServiceCard = ({ serviceDetails, setOpen, setRemoveId }: any) => {
               {serviceDetails.serviceName}
             </p>
             <p className="text-red-500 mb-4 text-xs">
-              Added By: {serviceDetails.name || "Shafin"}
+              Added By: {serviceDetails.addedBy || "Admin"}
             </p>
           </div>
           <span className="px-2 py-1 my-4 text-base rounded bg-green-200 font-medium">
