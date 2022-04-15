@@ -23,11 +23,9 @@ const DashBoardNav = () => {
       ),
     },
     {
-      name: "Previous Bookings",
+      name: "My Bookings",
       url: "/dashboard/bookings",
-      icon: (
-        <PlusCircleIcon className="text-indigo-500" width="20" height="20" />
-      ),
+      icon: <ViewListIcon className="text-indigo-500" width="20" height="20" />,
     },
     {
       name: "Payment System",

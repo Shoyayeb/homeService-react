@@ -25,7 +25,7 @@ const DashBoardRoot = () => {
         <div className=" md:space-y-4 md:px-4 md:py-3 mx-auto max-h-screen overflow-y-scroll overflow-x-hidden">
           <Routes>
             <Route path="/" element={<DashBoardHome />} />
-            <Route path="/myservices" element={<MyServices />} />
+            <Route path="/bookings" element={<MyServices />} />
             <Route
               path="/admin/addservice"
               element={

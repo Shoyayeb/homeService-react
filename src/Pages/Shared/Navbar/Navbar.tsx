@@ -146,7 +146,7 @@ const Navbar = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <Link
-                              to="/"
+                              to="/dashboard/bookings"
                               className={classNames(
                                 active
                                   ? "bg-gray-100 dark:hover:bg-gray-600"
