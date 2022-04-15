@@ -121,6 +121,8 @@ const useFirebase = () => {
   useEffect(() => {
     const url = `http://localhost:4000/allusers/${user.email}`;
     axios.get(url).then((data: any) => {
+      console.log(url, data.data);
+      
       setAdmin(data.data);
     });
   }, [user]);

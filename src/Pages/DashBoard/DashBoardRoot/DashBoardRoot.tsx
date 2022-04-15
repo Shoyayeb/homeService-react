@@ -22,7 +22,7 @@ const DashBoardRoot = () => {
     <main className="bg-gray-100 dark:bg-gray-800 h-screen ">
       <div className="flex items-start justify-between">
         <DashBoardNav />
-        <div className=" md:space-y-4 md:px-4 md:py-3 mx-auto max-h-screen overflow-y-scroll">
+        <div className=" md:space-y-4 md:px-4 md:py-3 mx-auto max-h-screen overflow-y-scroll overflow-x-hidden">
           <Routes>
             <Route path="/" element={<DashBoardHome />} />
             <Route path="/myservices" element={<MyServices />} />

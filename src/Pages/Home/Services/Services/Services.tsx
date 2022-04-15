@@ -15,7 +15,7 @@ const Services = () => {
   }, []);
   return (
     <div id="services">
-      <div className="w-full bg-white p-12">
+      <div className="w-full bg-white dark:bg-gray-800 p-12">
         <div className="header flex items-end justify-between mb-12">
           <div className="title">
             <p className="text-4xl font-bold text-gray-800 mb-4">
