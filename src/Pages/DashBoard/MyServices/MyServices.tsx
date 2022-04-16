@@ -1,5 +1,5 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { loadStripe } from "@stripe/stripe-js";
+import { Dialog, Menu, Transition } from "@headlessui/react";
+import { DotsVerticalIcon } from "@heroicons/react/outline";
 import axios from "axios";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
@@ -10,12 +10,12 @@ const MyServices = () => {
   const cancelButtonRef = useRef(null);
   const { user } = useAuth();
 
-  const stripePromise = loadStripe(
-    "pk_test_51KDwkpJFhxBrJA2ZdtdIFxSZfyERBbXipaiPfxunLcpNvUYrZeQHykfEnhm58w3zMPc9zzc5KBATLvzqeERgaXzR00fB2LgLUf"
-  );
+  // const stripePromise = loadStripe(
+  //   "pk_test_51KDwkpJFhxBrJA2ZdtdIFxSZfyERBbXipaiPfxunLcpNvUYrZeQHykfEnhm58w3zMPc9zzc5KBATLvzqeERgaXzR00fB2LgLUf"
+  // );
 
   // const removeService = (id: string) => {
-  //   const deleteUrl = `http://localhost:4000/removeservice/${id}`;
+  //   const deleteUrl = `https://homeservice-79e77.herokuapp.com/removeservice/${id}`;
   //   axios.delete(deleteUrl).then((data: any) => {
   //     console.log(data);
   //     if (data.data.deletedCount > 0) {
@@ -26,8 +26,15 @@ const MyServices = () => {
   //     }
   //   });
   // };
+  const sortOptions = [
+    { name: "Payment", href: "#", current: true },
+    { name: "Cancel", href: "#", current: false },
+  ];
+  function classNames(...classes: any) {
+    return classes.filter(Boolean).join(" ");
+  }
   useEffect(() => {
-    const url = `http://localhost:4000/mybookedservices/${user.uid}`;
+    const url = `https://homeservice-79e77.herokuapp.com/mybookedservices/${user.uid}`;
     axios.get(url).then((data: any) => {
       setServiceData(data.data);
     });
@@ -119,14 +126,49 @@ const MyServices = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       {service.paid ? (
-                        ""
+                        "Paid"
                       ) : (
-                        <button
-                          onClick={() => setOpen(true)}
-                          className="text-indigo-600 hover:text-indigo-900"
+                        <Menu
+                          as="div"
+                          className="relative inline-block text-left"
                         >
-                          Pay
-                        </button>
+                          <div>
+                            <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                              {/* Sort
+                              <ChevronDownIcon
+                                className="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                                aria-hidden="true"
+                              /> */}
+                              <DotsVerticalIcon
+                                className="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                                aria-hidden="true"
+                              />
+                            </Menu.Button>
+                          </div>
+
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="py-1">
+                                <Menu.Item>
+                                  <a
+                                    href="#"
+                                    className={"font-medium text-gray-900"}
+                                  >
+                                    Remove
+                                  </a>
+                                </Menu.Item>
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
                       )}
                     </td>
                     <Transition.Root show={open} as={Fragment}>

@@ -7,7 +7,7 @@ const BookedService = () => {
   const cancelButtonRef = useRef(null);
   const [open, setOpen] = useState(false);
   const removeService = (id: string) => {
-    const deleteUrl = `http://localhost:4000/removeservice/${id}`;
+    const deleteUrl = `https://homeservice-79e77.herokuapp.com/removeservice/${id}`;
     axios.delete(deleteUrl).then((data: any) => {
       if (data.data.deletedCount > 0) {
         const remaining = serviceData.filter(
@@ -18,7 +18,7 @@ const BookedService = () => {
     });
   };
   useEffect(() => {
-    const url = `http://localhost:4000/bookedservices`;
+    const url = `https://homeservice-79e77.herokuapp.com/bookedservices`;
     axios.get(url).then((data: any) => {
       setServiceData(data.data);
     });

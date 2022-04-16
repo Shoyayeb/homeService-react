@@ -15,7 +15,7 @@ const BookService = () => {
 
   const cancelButtonRef = useRef(null);
   useEffect(() => {
-    const url = `http://localhost:4000/service/${serviceId}`;
+    const url = `https://homeservice-79e77.herokuapp.com/service/${serviceId}`;
     axios.get(url).then((data: any) => {
       setServiceData(data.data);
     });
@@ -39,7 +39,7 @@ const BookService = () => {
     formData.paid = false;
     formData.price = serviceData.servicePrice;
     axios
-      .post("http://localhost:4000/bookingservice", formData)
+      .post("https://homeservice-79e77.herokuapp.com/bookingservice", formData)
       .then(function (res: any) {
         setBooked(true);
       })

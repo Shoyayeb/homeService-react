@@ -7,7 +7,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const url = `http://localhost:4000/services`;
+    const url = `https://homeservice-79e77.herokuapp.com/services`;
     axios.get(url).then((data: any) => {
       setLoading(false);
       setServices(data.data);

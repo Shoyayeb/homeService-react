@@ -119,10 +119,10 @@ const useFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    const url = `http://localhost:4000/allusers/${user.email}`;
+    const url = `https://homeservice-79e77.herokuapp.com/allusers/${user.email}`;
     axios.get(url).then((data: any) => {
       console.log(url, data.data);
-      
+
       setAdmin(data.data);
     });
   }, [user]);
@@ -143,7 +143,7 @@ const useFirebase = () => {
   };
 
   const saveUser = (email: any, displayName: any, method: any) => {
-    const url = "http://localhost:4000/adduser";
+    const url = "https://homeservice-79e77.herokuapp.com/adduser";
     const data = { email, displayName };
     axios({ method, url, data });
   };

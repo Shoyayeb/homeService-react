@@ -4,7 +4,7 @@ import userDefault from "../../../Assets/user-default.png";
 const UsersList = () => {
   const [usersData, setUsersData] = useState<any>([]);
   useEffect(() => {
-    const url = `http://localhost:4000/allusers`;
+    const url = `https://homeservice-79e77.herokuapp.com/allusers`;
     axios.get(url).then((data: any) => {
       setUsersData(data.data);
     });
