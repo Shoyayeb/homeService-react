@@ -12,6 +12,7 @@ import BookedService from "./../BookedService/BookedService";
 import DashBoardHome from "./../DashBoardHome/DashBoardHome";
 import DashBoardNav from "./../DashBoardNav/DashBoardNav";
 import UsersList from "./../UsersList/UsersList";
+import Review from "./../Review/Review";
 
 const DashBoardRoot = () => {
   const { isLoading } = useAuth();
@@ -26,6 +27,7 @@ const DashBoardRoot = () => {
           <Routes>
             <Route path="/" element={<DashBoardHome />} />
             <Route path="/bookings" element={<MyServices />} />
+            <Route path="/review" element={<Review />} />
             <Route
               path="/admin/addservice"
               element={

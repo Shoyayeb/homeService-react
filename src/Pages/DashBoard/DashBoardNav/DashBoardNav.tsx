@@ -162,7 +162,7 @@ const DashBoardNav = () => {
                       Change Address
                     </span>
                   </CustomLink>
-                  <CustomLink to="/dashboard/addadmin">
+                  <CustomLink to="/dashboard/review">
                     <ShieldCheckIcon
                       className="text-indigo-500"
                       width="20"

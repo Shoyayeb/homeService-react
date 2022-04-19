@@ -15,7 +15,7 @@ const ReviewCard = (props: any) => {
           <div className="inline-block relative">
             <a href="/" className="block relative">
               <img
-                alt="profil"
+                alt="profile"
                 src={image}
                 className="mx-auto object-cover rounded-full h-16 w-16 "
               />

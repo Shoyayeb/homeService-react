@@ -2,12 +2,13 @@
 import React from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import Spinner from "../../Shared/Spinner/Spinner";
 
 const PrivateOutlet = () => {
   const { user, isLoading } = useAuth();
   const location = useLocation();
   if (isLoading) {
-    return <div className="py-2 px-4 bg-indigo-600 w-full animate-ping" />;
+    return <Spinner />;
   }
   return user.email ? (
     <Outlet />

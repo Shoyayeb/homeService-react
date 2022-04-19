@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import ReviewCard from "../ReviewCard/ReviewCard";
 import HashLoader from "react-spinners/HashLoader";
-// import clean from "../../../../Assets/clean.png";
-// import cleaner from "../../../../Assets/cleaner.png";
 
 const ReviewRoot = () => {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -14,6 +12,7 @@ const ReviewRoot = () => {
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
+        // name, image, email, details, rate
         setLoading(false);
       });
   }, []);
