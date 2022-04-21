@@ -39,12 +39,12 @@ const Navbar = () => {
                   <img
                     className="block lg:hidden h-8 w-auto dark:backdrop-invert"
                     src={logo}
-                    alt="Workflow"
+                    alt="logo"
                   />
                   <img
                     className="hidden lg:block h-8 w-auto dark:backdrop-invert"
                     src={logo}
-                    alt="Workflow"
+                    alt="logo"
                   />
                 </div>
                 <div className="hidden sm:block sm:ml-6">

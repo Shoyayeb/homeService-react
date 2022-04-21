@@ -24,18 +24,6 @@ const Review = () => {
       details: details,
       rate: rate,
     };
-    // fetch("https://baby-island.herokuapp.com/addreview", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     alert("added");
-    //   });
-
     axios
       .post("https://homeservice-79e77.herokuapp.com/reviews", formData)
       .then((res: any) => console.log(res))
@@ -96,6 +84,102 @@ const Review = () => {
           </div>
         </div>
       </form>
+
+      <div className="w-full mx-auto max-w-xl rounded-lg mt-12 bg-white dark:bg-gray-800 shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:text-gray-50">
+        <div className="w-full pt-1 text-center pb-5 -mt-16 mx-auto">
+          <a href="#" className="block relative">
+            <img
+              alt="profil"
+              src={defaultImage}
+              className="mx-auto object-cover rounded-full h-20 w-20 "
+            />
+          </a>
+        </div>
+        <div className="ml-6">
+          <p className="flex items-baseline">
+            <span className="text-gray-600 dark:text-gray-200 font-bold">
+              A Msan
+            </span>
+            <span className="text-gray-500 dark:text-gray-300  ml-2 text-sm">
+              2 months ago
+            </span>
+          </p>
+          <div className="flex items-center mt-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              className="w-4 h-4 text-yellow-500"
+              fill="currentColor"
+              viewBox="0 0 1792 1792"
+            >
+              <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              className="w-4 h-4 text-yellow-500"
+              fill="currentColor"
+              viewBox="0 0 1792 1792"
+            >
+              <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              className="w-4 h-4 text-yellow-500"
+              fill="currentColor"
+              viewBox="0 0 1792 1792"
+            >
+              <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              className="w-4 h-4 text-yellow-500"
+              fill="currentColor"
+              viewBox="0 0 1792 1792"
+            >
+              <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              className="w-4 h-4 text-yellow-500"
+              fill="currentColor"
+              viewBox="0 0 1792 1792"
+            >
+              <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path>
+            </svg>
+          </div>
+
+          <div className="w-full mb-10">
+            <div className="text-3xl text-indigo-500 text-left leading-tight h-3">
+              “
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-100 text-center px-5">
+              To get social media testimonials like these, keep your customers
+              engaged with your social media accounts by posting regularly
+              yourself
+            </p>
+            <div className="text-3xl text-indigo-500 text-right leading-tight h-3 -mt-3">
+              ”
+            </div>
+          </div>
+          <div className="w-full">
+            <p className="text-md text-indigo-500 font-bold text-center">
+              Tom Hardy
+            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-300 text-center">
+              @thom.hardy
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
