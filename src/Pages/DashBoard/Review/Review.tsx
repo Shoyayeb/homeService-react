@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
+import React, { useState } from "react";
 import defaultImage from "../../../Assets/user-default.png";
+import useAuth from "../../../Hooks/useAuth";
 
 const Review = () => {
   const { user } = useAuth();
@@ -52,11 +52,15 @@ const Review = () => {
                   name="comment"
                   rows={5}
                   cols={40}
+                  maxLength={60}
                 ></textarea>
               </label>
             </div>
             <div className="col-span-2">
-              <label htmlFor="rate" className="text-gray-700">
+              <p className="dark:text-gray-200 text-gray-800 font-bold text-right">
+                {details.length}/60
+              </p>
+              <label htmlFor="rate" className="text-gray-700 dark:text-white">
                 Rate
               </label>
               <select
