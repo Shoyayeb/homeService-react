@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { Method } from "axios";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -8,7 +8,7 @@ import {
   signInWithPopup,
   signOut,
   TwitterAuthProvider,
-  updateProfile
+  updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeFirebase from "../Firebase/firebase.init";
@@ -32,40 +32,65 @@ const useFirebase = () => {
   // google sign in
   const socialSignIn = (socialProvider: string) => {
     setIsLoading(true);
-    // /////////
-    //
-    // conditional variable needs to set here
-    //
-    // /////////
-    if (socialProvider === "google") {
-      return signInWithPopup(auth, googleProvider)
-        .then((result: any) => {
-          const user = result.user;
-          setError("");
-          setShowLoginModal(false);
-          saveUser(user.email, user.displayName, "put");
-        })
-        .catch((error) => {
-          setError(error.message);
-          setModal(true);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    } else if (socialProvider === "twitter") {
-      return signInWithPopup(auth, twitterProvider)
-        .then((result: any) => {
-          setError("");
-          setShowLoginModal(false);
-          // saveUser(result.email, result.displayName, "put");
-        })
-        .catch((error) => {
-          setError(error.message);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+    // if (socialProvider === "google") {
+    //   return signInWithPopup(auth, googleProvider)
+    //     .then((result: any) => {
+    //       const user = result.user;
+    //       setError("");
+    //       setShowLoginModal(false);
+    //       saveUser(user.email, user.displayName, "put");
+    //     })
+    //     .catch((error) => {
+    //       setError(error.message);
+    //       setModal(true);
+    //     })
+    //     .finally(() => {
+    //       setIsLoading(false);
+    //     });
+    // } else if (socialProvider === "twitter") {
+    //   return signInWithPopup(auth, twitterProvider)
+    //     .then((result: any) => {
+    //       setError("");
+    //       setShowLoginModal(false);
+    //       // saveUser(result.email, result.displayName, "put");
+    //     })
+    //     .catch((error) => {
+    //       setError(error.message);
+    //     })
+    //     .finally(() => {
+    //       setIsLoading(false);
+    //     });
+    // }
+    const provider =
+      socialProvider === "google" ? googleProvider : twitterProvider;
+
+    try {
+      signInWithPopup(auth, provider).then((result: any) => {
+        const user = result.user;
+        setError("");
+        setShowLoginModal(false);
+        saveUser(user.email, user.displayName, "put");
+      });
+    } catch (error: any) {
+      setError(error.message);
+      setModal(true);
+    } finally {
+      setIsLoading(false);
     }
+    // signInWithPopup(auth, provider)
+    //   .then((result: any) => {
+    //     const user = result.user;
+    //     setError("");
+    //     setShowLoginModal(false);
+    //     saveUser(user.email, user.displayName, "put");
+    //   })
+    //   .catch((error) => {
+    //     setError(error.message);
+    //     setModal(true);
+    //   })
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
   };
 
   //   create user with email and password
@@ -118,11 +143,10 @@ const useFirebase = () => {
     return () => unsubscribe();
   }, [auth]);
 
+  // checking is admin
   useEffect(() => {
     const url = `https://homeservice-79e77.herokuapp.com/allusers/${user.email}`;
     axios.get(url).then((data: any) => {
-      console.log(url, data.data);
-
       setAdmin(data.data);
     });
   }, [user]);
@@ -133,7 +157,6 @@ const useFirebase = () => {
     signOut(auth)
       .then(() => {
         setError("");
-        console.log("Sign out success");
       })
       .catch((error) => {
         setError(error.message);
@@ -142,7 +165,7 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const saveUser = (email: any, displayName: any, method: any) => {
+  const saveUser = (email: string, displayName: string, method: Method) => {
     const url = "https://homeservice-79e77.herokuapp.com/adduser";
     const data = { email, displayName };
     axios({ method, url, data });

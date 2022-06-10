@@ -1,7 +1,5 @@
-import React from "react";
-
 const ReviewCard = (props: any) => {
-  const { name, image, email, details, rate } = props.review;
+  const { name, image, email, details, rate, _id } = props.review;
 
   var rating = [];
   for (var i = 0; i < rate; i++) {
@@ -26,8 +24,9 @@ const ReviewCard = (props: any) => {
             {email}
           </p>
           <div className="flex items-center justify-center mt-1">
-            {rating.map((ratingStar) => (
+            {rating.map((ratingStar, index) => (
               <svg
+                key={index}
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
