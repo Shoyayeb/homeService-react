@@ -65,7 +65,7 @@ const useFirebase = () => {
       socialProvider === "google" ? googleProvider : twitterProvider;
 
     try {
-      signInWithPopup(auth, provider).then((result: any) => {
+      return signInWithPopup(auth, provider).then((result: any) => {
         const user = result.user;
         setError("");
         setShowLoginModal(false);
