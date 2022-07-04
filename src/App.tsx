@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AuthProvider from "./Context/AuthProvider/AuthProvider";
 import BookService from "./Pages/BookService/BookService";
@@ -22,16 +21,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<LoginRegisterRoot />} />
-
-          {/* nested route */}
-
           <Route path="/*" element={<PrivateOutlet />}>
             <Route path="bookservice/:serviceId" element={<BookService />} />
             <Route path="dashboard/*" element={<DashBoardRoot />} />
           </Route>
-
           <Route path="/admin/*" element={<AddAdminForm />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
