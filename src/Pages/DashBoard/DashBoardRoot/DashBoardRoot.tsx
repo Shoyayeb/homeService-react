@@ -1,18 +1,17 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AddAdminForm from "../../../Components/Forms/AddAdminForm/AddAdminForm";
+import Spinner from "../../../Components/Spinner/Spinner";
 import useAuth from "../../../Hooks/useAuth";
 import AdminRoute from "../../LoginRegister/AdminRoute/AdminRoute";
-import Spinner from "../../Shared/Spinner/Spinner";
 import AllServices from "../AllServices/AllServices";
 import MyServices from "../MyServices/MyServices";
-import AddAdminForm from "./../../Forms/AddAdminForm/AddAdminForm";
 import NotFound from "./../../NotFound/NotFound";
 import AddService from "./../AddService/AddService";
 import BookedService from "./../BookedService/BookedService";
 import DashBoardHome from "./../DashBoardHome/DashBoardHome";
 import DashBoardNav from "./../DashBoardNav/DashBoardNav";
-import UsersList from "./../UsersList/UsersList";
 import Review from "./../Review/Review";
+import UsersList from "./../UsersList/UsersList";
 
 const DashBoardRoot = () => {
   const { isLoading } = useAuth();

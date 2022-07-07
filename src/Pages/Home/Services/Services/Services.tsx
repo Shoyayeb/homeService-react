@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Spinner from "../../../Shared/Spinner/Spinner";
+import { useEffect, useState } from "react";
+import Spinner from "../../../../Components/Spinner/Spinner";
 import ServiceCard from "./../ServiceCard/ServiceCard";
 
 const Services = () => {

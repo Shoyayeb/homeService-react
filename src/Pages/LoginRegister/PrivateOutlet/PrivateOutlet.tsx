@@ -1,8 +1,7 @@
 /* eslint-disable no-restricted-globals */
-import React from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import Spinner from "../../../Components/Spinner/Spinner";
 import useAuth from "../../../Hooks/useAuth";
-import Spinner from "../../Shared/Spinner/Spinner";
 
 const PrivateOutlet = () => {
   const { user, isLoading } = useAuth();

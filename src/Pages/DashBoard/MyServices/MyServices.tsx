@@ -2,8 +2,8 @@ import { Menu } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Spinner from "../../../Components/Spinner/Spinner";
 import useAuth from "../../../Hooks/useAuth";
-import Spinner from "../../Shared/Spinner/Spinner";
 
 const MyServices = () => {
   const [serviceData, setServiceData] = useState<any>([]);

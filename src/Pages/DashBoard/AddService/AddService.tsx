@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import DoneModal from "../../Shared/Modals/DoneModal";
+import DoneModal from "../../../Components/Modals/DoneModal";
 import useAuth from "../../../Hooks/useAuth";
 
 const AddService = () => {

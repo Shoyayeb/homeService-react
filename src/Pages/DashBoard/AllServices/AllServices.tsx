@@ -1,8 +1,8 @@
-import axios from "axios";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationIcon } from "@heroicons/react/outline";
-import React, { Fragment, useEffect, useRef, useState } from "react";
-import Spinner from "../../Shared/Spinner/Spinner";
+import axios from "axios";
+import { Fragment, useEffect, useRef, useState } from "react";
+import Spinner from "../../../Components/Spinner/Spinner";
 import SmallServiceCard from "../../Home/Services/SmallServiceCard/SmallServiceCard";
 
 const AllServices = () => {
@@ -149,6 +149,6 @@ const AllServices = () => {
       </div>
     </div>
   );
-};;
+};
 
 export default AllServices;

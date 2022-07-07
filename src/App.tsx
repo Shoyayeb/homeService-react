@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
+import AddAdminForm from "./Components/Forms/AddAdminForm/AddAdminForm";
+import ErrorModal from "./Components/Modals/ErrorModal";
 import AuthProvider from "./Context/AuthProvider/AuthProvider";
 import BookService from "./Pages/BookService/BookService";
 import DashBoardRoot from "./Pages/DashBoard/DashBoardRoot/DashBoardRoot";
-import AddAdminForm from "./Pages/Forms/AddAdminForm/AddAdminForm";
 import Home from "./Pages/Home/Home/Home";
 import LoginRegisterRoot from "./Pages/LoginRegister/LoginRegisterRoot/LoginRegisterRoot";
 import PrivateOutlet from "./Pages/LoginRegister/PrivateOutlet/PrivateOutlet";
 import NotFound from "./Pages/NotFound/NotFound";
 import Footer from "./Pages/Shared/Footer/Footer";
-import ErrorModal from "./Pages/Shared/Modals/ErrorModal";
 import Navbar from "./Pages/Shared/Navbar/Navbar";
 
 function App() {

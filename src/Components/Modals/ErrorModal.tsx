@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationIcon } from "@heroicons/react/outline";
-import React, { Fragment, useRef } from "react";
-import useAuth from "../../../Hooks/useAuth";
+import { Fragment, useRef } from "react";
+import useAuth from "../../Hooks/useAuth";
 
 const ErrorModal = () => {
   //   const [open, setOpen] = useState(true);

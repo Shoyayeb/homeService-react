@@ -7,10 +7,9 @@ import {
   UserGroupIcon,
   ViewListIcon,
 } from "@heroicons/react/outline";
-import React from "react";
 import { Link, LinkProps, useMatch, useResolvedPath } from "react-router-dom";
+import Spinner from "../../../Components/Spinner/Spinner";
 import useAuth from "../../../Hooks/useAuth";
-import Spinner from "../../Shared/Spinner/Spinner";
 
 const DashBoardNav = () => {
   const { admin, isLoading } = useAuth();

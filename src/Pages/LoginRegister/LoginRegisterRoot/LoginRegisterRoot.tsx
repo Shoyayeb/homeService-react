@@ -1,9 +1,8 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import LoginBanner from "../../../Assets/clean.png";
+import LoginForm from "../../../Components/Forms/LoginForm/LoginForm";
+import RegisterForm from "../../../Components/Forms/RegisterForm/RegisterForm";
 import useAuth from "../../../Hooks/useAuth";
-import LoginForm from "./../../Forms/LoginForm/LoginForm";
-import RegisterForm from "./../../Forms/RegisterForm/RegisterForm";
 const LoginRegisterRoot = () => {
   const { isLogin, setIsLogin, socialSignIn } = useAuth();
   const navigate = useNavigate();
