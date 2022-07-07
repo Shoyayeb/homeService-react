@@ -19,6 +19,7 @@ const UsersList = () => {
     // const url = `http://localhost:5000/removeUser/${uid}`;
     axios.delete(url).then((data: any) => {
       setDeleted(true);
+      console.log(deleted);
     });
 
     //---> using authentication for deleting users ↓

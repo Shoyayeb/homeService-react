@@ -1,5 +1,5 @@
 const ReviewCard = (props: any) => {
-  const { name, image, email, details, rate, _id } = props.review;
+  const { name, image, email, details, rate } = props.review;
 
   var rating = [];
   for (var i = 0; i < rate; i++) {

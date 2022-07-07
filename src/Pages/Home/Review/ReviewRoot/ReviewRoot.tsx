@@ -6,7 +6,6 @@ import ReviewCard from "../ReviewCard/ReviewCard";
 const ReviewRoot = () => {
   const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState<Boolean>(true);
-  let [color, setColor] = useState("#4f46e5");
   useEffect(() => {
     fetch("https://homeservice-79e77.herokuapp.com/reviews")
       .then((res) => res.json())
@@ -19,7 +18,7 @@ const ReviewRoot = () => {
     <div id="reviews" className="my-10">
       {loading ? (
         <div className="flex justify-center">
-          <HashLoader color={color} />
+          <HashLoader color="#4f46e5" />
         </div>
       ) : (
         <Carousel showArrows={false}>
