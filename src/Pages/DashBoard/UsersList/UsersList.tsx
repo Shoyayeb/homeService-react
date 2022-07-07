@@ -1,14 +1,36 @@
+import { XIcon } from "@heroicons/react/outline";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import userDefault from "../../../Assets/user-default.png";
 const UsersList = () => {
   const [usersData, setUsersData] = useState<any>([]);
+  const [deleted, setDeleted] = useState<any>(false);
   useEffect(() => {
     const url = `https://homeservice-79e77.herokuapp.com/allusers`;
+    // const url = `http://localhost:5000/allusers`;
     axios.get(url).then((data: any) => {
-      setUsersData(data.data);
+      console.log(data.data.users);
+      setUsersData(data.data.users);
     });
   }, []);
+  const removeUser = (uid: any) => {
+    console.log(uid);
+    const url = `https://homeservice-79e77.herokuapp.com/removeUser/${uid}`;
+    // const url = `http://localhost:5000/removeUser/${uid}`;
+    axios.delete(url).then((data: any) => {
+      setDeleted(true);
+    });
+
+    //---> using authentication for deleting users ↓
+    // axios.delete(url,{
+    //   headers: {
+    //     Authorization: authorizationToken
+    //   },
+    //   data: {
+    //     source: source
+    //   }
+    // });
+  };
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -48,19 +70,19 @@ const UsersList = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {usersData.map((user: any) => (
-                  <tr key={user.email}>
+                  <tr key={user.uid}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
                           <img
                             className="h-10 w-10 rounded-full"
-                            src={user.image || userDefault}
-                            alt=""
+                            src={user.photoURL || userDefault}
+                            alt="userImage"
                           />
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">
-                            {user.name}
+                            {user.displayName}
                           </div>
                           <div className="text-sm text-gray-500">
                             {user.email}
@@ -69,7 +91,9 @@ const UsersList = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{user.title}</div>
+                      <div className="text-sm text-gray-900">
+                        {user.metadata.lastSignInTime?.slice(0, 16)}
+                      </div>
                       <div className="text-sm text-gray-500">
                         {user.department}
                       </div>
@@ -83,12 +107,9 @@ const UsersList = () => {
                       {user.role}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a
-                        href="#"
-                        className="text-indigo-600 hover:text-indigo-900"
-                      >
-                        Edit
-                      </a>
+                      <button onClick={() => removeUser(user.uid)}>
+                        <XIcon className="h-6 w-6" />
+                      </button>
                     </td>
                   </tr>
                 ))}

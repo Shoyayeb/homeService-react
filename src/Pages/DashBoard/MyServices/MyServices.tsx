@@ -8,9 +8,6 @@ import Spinner from "../../Shared/Spinner/Spinner";
 const MyServices = () => {
   const [serviceData, setServiceData] = useState<any>([]);
   const { user } = useAuth();
-  function classNames(...classes: any) {
-    return classes.filter(Boolean).join(" ");
-  }
   useEffect(() => {
     const url = `https://homeservice-79e77.herokuapp.com/mybookedservices/${user.uid}`;
     axios.get(url).then((data: any) => {
