@@ -13,11 +13,11 @@
 - [x] Dashboard dynamic
 - [x] Review section
 - [ ] Dark theme update
-- [ ] Booked service update and remove
+- [x] Booked service update and remove
 - [ ] Responsive
 - [ ] Payment
 - [ ] Upload photos
 - [ ] Modals and Animation
 - [ ] Removing users with firebase in backend
 - [ ] Hiring part
-- [ ] TypeScript types changes
+- [x] TypeScript types changes
