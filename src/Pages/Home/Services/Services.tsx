@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Spinner from "../../../../Components/Spinner/Spinner";
-import ServiceCard from "./../ServiceCard/ServiceCard";
+import ServiceCard from "../../../Components/Cards/ServiceCard/ServiceCard";
+import Spinner from "../../../Components/Spinner/Spinner";
 
 const Services = () => {
   const [services, setServices] = useState([]);

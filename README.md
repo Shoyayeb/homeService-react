@@ -1,4 +1,4 @@
-# Tutor Website
+# HomeService Website
 
 ### Features:
 1. HomeService websites users book services for their home. See booked services and update or remove them in dashboard. Also users can update their details and add review. Admins can see the list of users, booked services by users, list available service, add new service or remove a service. Admin can also add another user as admin who can do the same work.

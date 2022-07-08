@@ -2,8 +2,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationIcon } from "@heroicons/react/outline";
 import axios from "axios";
 import { Fragment, useEffect, useRef, useState } from "react";
+import SmallServiceCard from "../../../Components/Cards/SmallServiceCard/SmallServiceCard";
 import Spinner from "../../../Components/Spinner/Spinner";
-import SmallServiceCard from "../../Home/Services/SmallServiceCard/SmallServiceCard";
 
 const AllServices = () => {
   const [services, setServices] = useState([]);

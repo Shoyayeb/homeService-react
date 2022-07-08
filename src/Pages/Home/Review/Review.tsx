@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import HashLoader from "react-spinners/HashLoader";
-import ReviewCard from "../ReviewCard/ReviewCard";
+import ReviewCard from "../../../Components/Cards/ReviewCard/ReviewCard";
 
-const ReviewRoot = () => {
+const Review = () => {
   const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState<Boolean>(true);
   useEffect(() => {
@@ -31,4 +31,4 @@ const ReviewRoot = () => {
   );
 };
 
-export default ReviewRoot;
+export default Review;
