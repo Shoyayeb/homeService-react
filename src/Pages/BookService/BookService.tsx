@@ -15,7 +15,7 @@ const BookService = () => {
 
   const cancelButtonRef = useRef(null);
   useEffect(() => {
-    const url = `https://homeservice-79e77.herokuapp.com/service/${serviceId}`;
+    const url = `https://homeservice-ixli.onrender.com/service/${serviceId}`;
     axios.get(url).then((data: any) => {
       setServiceData(data.data);
     });
@@ -39,7 +39,7 @@ const BookService = () => {
     formData.paid = false;
     formData.price = serviceData.servicePrice;
     axios
-      .post("https://homeservice-79e77.herokuapp.com/bookingservice", formData)
+      .post("https://homeservice-ixli.onrender.com/bookingservice", formData)
       .then(function (res: any) {
         setBooked(true);
       })

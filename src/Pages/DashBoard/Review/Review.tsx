@@ -25,7 +25,7 @@ const Review = () => {
       rate: rate,
     };
     axios
-      .post("https://homeservice-79e77.herokuapp.com/reviews", formData)
+      .post("https://homeservice-ixli.onrender.com/reviews", formData)
       .then((res: any) => console.log(res))
       .then((data: any) => {
         window.alert("Review added");

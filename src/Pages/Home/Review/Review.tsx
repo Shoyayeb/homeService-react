@@ -7,7 +7,7 @@ const Review = () => {
   const [reviews, setReviews] = useState<any[]>([]);
   const [loading, setLoading] = useState<Boolean>(true);
   useEffect(() => {
-    fetch("https://homeservice-79e77.herokuapp.com/reviews")
+    fetch("https://homeservice-ixli.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

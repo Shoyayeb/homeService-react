@@ -20,7 +20,7 @@ const AddService = () => {
     e.preventDefault();
     serviceData.addedBy = user.email;
     axios
-      .post("https://homeservice-79e77.herokuapp.com/addservice", serviceData)
+      .post("https://homeservice-ixli.onrender.com/addservice", serviceData)
       .then(function (res: any) {
         setDone(true);
       })

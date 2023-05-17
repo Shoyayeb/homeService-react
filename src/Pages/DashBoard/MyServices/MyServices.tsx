@@ -9,14 +9,14 @@ const MyServices = () => {
   const [serviceData, setServiceData] = useState<any>([]);
   const { user } = useAuth();
   useEffect(() => {
-    const url = `https://homeservice-79e77.herokuapp.com/mybookedservices/${user.uid}`;
+    const url = `https://homeservice-ixli.onrender.com/mybookedservices/${user.uid}`;
     axios.get(url).then((data: any) => {
       setServiceData(data.data);
       console.log(data.data);
     });
   }, [user.uid]);
   const removeService = (id: string) => {
-    const deleteUrl = `https://homeservice-79e77.herokuapp.com/removeservice/${id}`;
+    const deleteUrl = `https://homeservice-ixli.onrender.com/removeservice/${id}`;
     axios.delete(deleteUrl).then((data: any) => {
       if (data.data.deletedCount > 0) {
         const remaining = serviceData.filter(

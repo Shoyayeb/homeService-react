@@ -6,7 +6,7 @@ const UsersList = () => {
   const [usersData, setUsersData] = useState<any>([]);
   const [deleted, setDeleted] = useState<any>(false);
   useEffect(() => {
-    const url = `https://homeservice-79e77.herokuapp.com/allusers`;
+    const url = `https://homeservice-ixli.onrender.com/allusers`;
     // const url = `http://localhost:5000/allusers`;
     axios.get(url).then((data: any) => {
       console.log(data.data.users);
@@ -15,7 +15,7 @@ const UsersList = () => {
   }, []);
   const removeUser = (uid: any) => {
     console.log(uid);
-    const url = `https://homeservice-79e77.herokuapp.com/removeUser/${uid}`;
+    const url = `https://homeservice-ixli.onrender.com/removeUser/${uid}`;
     // const url = `http://localhost:5000/removeUser/${uid}`;
     axios.delete(url).then((data: any) => {
       setDeleted(true);

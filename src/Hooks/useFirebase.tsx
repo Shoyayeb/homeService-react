@@ -145,7 +145,7 @@ const useFirebase = () => {
 
   // checking is admin
   useEffect(() => {
-    const url = `https://homeservice-79e77.herokuapp.com/allusers/${user.email}`;
+    const url = `https://homeservice-ixli.onrender.com/allusers/${user.email}`;
     axios.get(url).then((data: any) => {
       setAdmin(data.data);
     });
@@ -166,7 +166,7 @@ const useFirebase = () => {
   };
 
   const saveUser = (email: string, displayName: string, method: Method) => {
-    const url = "https://homeservice-79e77.herokuapp.com/adduser";
+    const url = "https://homeservice-ixli.onrender.com/adduser";
     const data = { email, displayName };
     axios({ method, url, data });
   };

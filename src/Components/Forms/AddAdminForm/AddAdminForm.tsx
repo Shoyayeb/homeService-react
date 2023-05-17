@@ -16,7 +16,7 @@ const AddAdminForm = () => {
   const submitAdminForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     axios
-      .put("https://homeservice-79e77.herokuapp.com/adduser/admin", adminData)
+      .put("https://homeservice-ixli.onrender.com/adduser/admin", adminData)
       .then(function (res: any) {
         setDone(true);
       })
