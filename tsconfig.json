@@ -18,9 +18,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
-    "src"
+    "src2",
+    ".next/types/**/*.ts"
+, "Components", "Hooks", "Context", "app/(home)/components/Banner", "app/(home)/components/Review/ReviewCard"  ],
+  "exclude": [
+    "node_modules"
   ]
 }
